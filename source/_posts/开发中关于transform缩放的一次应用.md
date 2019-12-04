@@ -11,7 +11,7 @@ tags:
 在做项目上的登陆注册页面时，设计图给的是1920×1080的尺寸，当后来要加一行表单时就遇到了一个显示上问题。
 <!-- more -->
 如下图：
-![使用说明](开发中关于transform缩放的一次应用/1.jpg)
+![1.jpg](https://i.loli.net/2019/12/02/2cwzlXgOd7LEUD9.jpg)
 在之前一版没加‘验证码’表单项时，在笔记本上还能够勉强都显示出来，但是再加一行过后，明显已经超过浏览器的显示范围了，这对于用户体验来说很不友好。
 其实如果是在正规的1920*1080分辨率的屏幕下，显示效果很好，但是笔记本用户一般会对电脑显示进行放大，且一般为125%，所以就会出现这种情况。
 
@@ -20,4 +20,4 @@ tags:
 渲染的时候先用window.document.documentElement.clientHeight读取到页面的高度，当这个高度小于950的时候，加上zoom：0.8，但是这时候又遇到了一个新的问题：在ie和chrome下支持，在firefox下不起作用。
 于是马上打开百度搜索，在看过几个答案过后，得出一个结论：zoom确实存在兼容性问题，但是可以用transform: scale(0.8)搭配transform-origin：‘center center’来解决firefox下不起作用的问题（不过最后因为不用考虑ie低版本，所以直接舍弃掉zoom属性，统一用transform：scale(0.8)以及transform-origin：‘center center’来改变样式）。
 最后在125%缩放的笔记本显示效果如下：
-![使用说明](开发中关于transform缩放的一次应用/2.jpg)
+![2.jpg](https://i.loli.net/2019/12/02/MaXqKAEQ3LVwkNF.jpg)

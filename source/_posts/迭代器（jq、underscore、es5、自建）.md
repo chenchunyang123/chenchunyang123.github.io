@@ -7,29 +7,36 @@ tags:
 	- 迭代器方法
 ---
 ##### Jq中的迭代器
+
 ###### dom结构
-![dom](迭代器（jq、underscore、es5、自建）/jq1.jpg)
+
+![jq1.jpg](https://i.loli.net/2019/12/02/YlosBPycev8Z5MJ.jpg)
 <!-- more -->
+
 ###### js方法
-![js](迭代器（jq、underscore、es5、自建）/jq2.jpg)
+![jq2.jpg](https://i.loli.net/2019/12/02/hMGcsWezUQr7SxJ.jpg)
 ###### 输出
-![输出](迭代器（jq、underscore、es5、自建）/jq3.jpg)（省略后面重复部分）
+![jq3.jpg](https://i.loli.net/2019/12/02/9Nm1khVTLdtwncA.jpg)（省略后面重复部分）
 ###### 定义一个数组及遍历
-![数组遍历](迭代器（jq、underscore、es5、自建）/jq4.jpg)
+![jq4.jpg](https://i.loli.net/2019/12/02/uBkgNWGepob2Qa4.jpg)
 输出：（this的实质就是每一次遍历到的value的数字包装类型）
-![遍历输出](迭代器（jq、underscore、es5、自建）/jq5.jpg)
+![jq5.jpg](https://i.loli.net/2019/12/02/oYEeqQKiX7CuS5r.jpg)
+
 ______________________________________________________
 ##### underscore中的迭代器
 ###### 定义一个数组及遍历
-![数组遍历](迭代器（jq、underscore、es5、自建）/jq6.jpg)
+
+![jq6.jpg](https://i.loli.net/2019/12/02/5BrsMNnmkD1gISi.jpg)
 输出：
-![遍历输出](迭代器（jq、underscore、es5、自建）/jq7.jpg)
+![jq7.jpg](https://i.loli.net/2019/12/02/1IdmP5ChsLJYFof.jpg)
+
 ______________________________________________________
 ##### es5中的迭代器
 ###### 定义一个数组及遍历
-![数组遍历](迭代器（jq、underscore、es5、自建）/jq8.jpg)
+![jq8.jpg](https://i.loli.net/2019/12/02/CwGAkXojhZqdacP.jpg)
 输出：
-![遍历输出](迭代器（jq、underscore、es5、自建）/jq9.jpg)
+![jq9.jpg](https://i.loli.net/2019/12/02/WAEzJIsuRhramyX.jpg)
+
 ______________________________________________________
 ##### 自己的迭代器
 ###### 目的
@@ -57,8 +64,10 @@ ______________________________________________________
 	}
 ```
 ###### 数组遍历结果
-![遍历数组](迭代器（jq、underscore、es5、自建）/jq10.jpg)
-![输出](迭代器（jq、underscore、es5、自建）/jq11.jpg)
+![jq10.jpg](https://i.loli.net/2019/12/02/HhceLd8EI74GTnN.jpg)
+![jq11.jpg](https://i.loli.net/2019/12/02/gyPu7avIGVr1C3o.jpg)
+
 ###### 对象遍历结果
-![遍历对象](迭代器（jq、underscore、es5、自建）/jq12.jpg)
-![输出](迭代器（jq、underscore、es5、自建）/jq13.jpg)
+
+![jq12.jpg](https://i.loli.net/2019/12/02/YT6RH9BsftuOzlW.jpg)
+![jq13.jpg](https://i.loli.net/2019/12/02/WQMrd6F7cgna9xV.jpg)
