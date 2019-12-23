@@ -70,7 +70,18 @@
             
             
             id="home">
-            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+            <i class='fas fa-book-open fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/http:/chenchunyang.site/notes/dist/"
+            
+            
+              target="true"
+            
+            id="http:chenchunyang.sitenotesdist">
+            <i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
           </a>
         </li>
       
@@ -216,6 +227,17 @@
             </li>
           
             <li>
+							<a class="nav flat-box" href="/http:/chenchunyang.site/notes/dist/"
+                
+                
+                  target="true"
+                
+                id="http:chenchunyang.sitenotesdist">
+								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
+							</a>
+            </li>
+          
+            <li>
 							<a class="nav flat-box" href="/blog/archives/"
                 
                   rel="nofollow"
@@ -300,7 +322,7 @@
             
   <div class='new-meta-item author'>
     
-      <a href="/http:/yoursite.com" rel="nofollow">
+      <a href="/http:/chenchunyang.site" rel="nofollow">
         
           <i class="fas fa-user" aria-hidden="true"></i>
         
@@ -454,9 +476,6 @@
 
       </div>
       
-        <br>
-        <center>如果您觉得文章写的不错，可以鼓励我产出更多优质的内容：<br><fancybox>![](https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png)</fancybox></center>
-      
       
       
           <div class="prev-next">
@@ -511,7 +530,21 @@
 
 
 
-  
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
 
 
 
@@ -980,6 +1013,36 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="/js/volantis.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "O0vzKX7iGrqsq8iKA7sLobxk-gzGzoHsz",
+    appKey: "Tojf62ywgJehrlbT7hQvVgRm",
+    placeholder: "快来评论吧~",
+    pageSize:'5',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
 
 
 
