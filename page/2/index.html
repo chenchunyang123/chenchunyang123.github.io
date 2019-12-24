@@ -11,6 +11,8 @@
   
 
   
+  <link rel="alternate" href="/atom.xml" title="一条放了盐的鱼">
+  
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,6 +44,7 @@
 
   
   
+<link rel="alternate" href="/atom.xml" title="一条放了盐的鱼" type="application/atom+xml">
 </head>
 
 <body>
@@ -73,34 +76,23 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/blog/categories/"
+								<a class="nav flat-box" href="/categories"
                   
                     rel="nofollow"
                   
                   
-                  id="blogcategories">
+                  id="categories">
 									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 								</a>
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/blog/tags/"
+								<a class="nav flat-box" href="/archives"
                   
                     rel="nofollow"
                   
                   
-                  id="blogtags">
-									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
-								</a>
-							</li>
-      			
-  						<li>
-								<a class="nav flat-box" href="/blog/archives/"
-                  
-                    rel="nofollow"
-                  
-                  
-                  id="blogarchives">
+                  id="archives">
 									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 								</a>
 							</li>
@@ -234,8 +226,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/11/03/%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88jq%E3%80%81underscore%E3%80%81es5%E3%80%81%E8%87%AA%E5%BB%BA%EF%BC%89/">
-      迭代器（jq、underscore、es5、自建）
+    <a href="/2019/05/20/%E5%9F%BA%E4%BA%8Efetch%E5%B0%81%E8%A3%85%E7%9A%84%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E4%BB%A3%E7%A0%81/">
+      基于fetch封装的下载文件代码
     </a>
   </h2>
 
@@ -265,7 +257,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-11-03</p>
+    <p>2019-05-20</p>
   </a>
 </div>
 
@@ -275,12 +267,35 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%BD%92%E7%BA%B3/' rel="nofollow">
+    <a href='/categories/fetch/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>归纳</p>
+      <p>fetch</p>
     </a>
   </div>
 
+
+          
+        
+          
+             
+<div style="margin-right: 10px;">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-keyboard"></i>
+            <span class="post-meta-item-text"> 字数统计: </span>
+            <span class="post-count">350字</span>
+        </span>
+    </span>
+    &nbsp; | &nbsp;
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-hourglass-half"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1分</span>
+        </span>
+    </span>
+</div>
+ 
 
           
         
@@ -299,10 +314,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h5 id="Jq中的迭代器"><a href="#Jq中的迭代器" class="headerlink" title="Jq中的迭代器"></a>Jq中的迭代器</h5><h6 id="dom结构"><a href="#dom结构" class="headerlink" title="dom结构"></a>dom结构</h6><p><img src="https://i.loli.net/2019/12/02/YlosBPycev8Z5MJ.jpg" alt="jq1.jpg"></p>
+      <h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>公司的一个项目当中，之前的所有请求并不需要在请求头上都加上token，不需要验证，但是最近后台逻辑改了，要都加上token。大多数请求都还好，直接加上就可以了，但是下载文件之前是使用a标签来做的，a标签又没有办法直接加headers，那么只能考虑用另一种方法模拟，再加上项目中请求基本都是用的fetch，于是自然是想着基于fetch封装一个下载文件的方法。</p>
       
         <div class="readmore">
-          <a href="/2018/11/03/%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88jq%E3%80%81underscore%E3%80%81es5%E3%80%81%E8%87%AA%E5%BB%BA%EF%BC%89/" class="flat-box">
+          <a href="/2019/05/20/%E5%9F%BA%E4%BA%8Efetch%E5%B0%81%E8%A3%85%E7%9A%84%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E4%BB%A3%E7%A0%81/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -312,7 +327,7 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%96%B9%E6%B3%95/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 迭代器方法</a>
+          <a href="/tags/%E5%B0%81%E8%A3%85/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 封装</a>
         
       </div>
     
@@ -335,8 +350,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/10/30/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%BB%93%E5%90%88seajs%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%B0%8F%E5%AE%9E%E4%BE%8B/">
-      观察者模式结合seajs模块化的小实例
+    <a href="/2018/11/26/gulp%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      gulp工程化及一些常用插件的使用
     </a>
   </h2>
 
@@ -366,7 +381,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-10-30</p>
+    <p>2018-11-26</p>
   </a>
 </div>
 
@@ -376,12 +391,35 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
+    <a href='/categories/nodejs/gulp/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>设计模式</p>
+      <p>nodejs&nbsp;/&nbsp;gulp</p>
     </a>
   </div>
 
+
+          
+        
+          
+             
+<div style="margin-right: 10px;">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-keyboard"></i>
+            <span class="post-meta-item-text"> 字数统计: </span>
+            <span class="post-count">993字</span>
+        </span>
+    </span>
+    &nbsp; | &nbsp;
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-hourglass-half"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3分</span>
+        </span>
+    </span>
+</div>
+ 
 
           
         
@@ -400,10 +438,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h4 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h4><p>首先我们打算实现如下图所示的效果：<br><img src="https://i.loli.net/2019/12/02/aLjBlcPWpEGqohA.gif" alt="GIF.gif"></p>
+      <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>所谓的工程化就是将写完的代码进行压缩合并等操作。<br>gulp是一个工程化工具，代码在书写完毕之前，需要有回车换行空白符等内容。但是一旦书写完毕，交给浏览器运行时，这些内容没有用。需要移除。<br>此时有两种方案：</p>
       
         <div class="readmore">
-          <a href="/2018/10/30/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%BB%93%E5%90%88seajs%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%B0%8F%E5%AE%9E%E4%BE%8B/" class="flat-box">
+          <a href="/2018/11/26/gulp%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -413,7 +451,7 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 观察者模式</a>
+          <a href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 常用插件</a>
         
       </div>
     
@@ -436,8 +474,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/10/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%A7%94%E6%89%98%E6%A8%A1%E5%BC%8F/">
-      设计模式——委托模式
+    <a href="/2018/11/23/%E8%AE%B0%E5%BD%95%E5%85%B3%E4%BA%8E%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E7%9A%84%E5%B0%8F%E5%9D%91/">
+      记录关于路由拦截的小坑
     </a>
   </h2>
 
@@ -467,7 +505,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-10-30</p>
+    <p>2018-11-23</p>
   </a>
 </div>
 
@@ -477,12 +515,35 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
+    <a href='/categories/nodejs/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>设计模式</p>
+      <p>nodejs</p>
     </a>
   </div>
 
+
+          
+        
+          
+             
+<div style="margin-right: 10px;">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-keyboard"></i>
+            <span class="post-meta-item-text"> 字数统计: </span>
+            <span class="post-count">749字</span>
+        </span>
+    </span>
+    &nbsp; | &nbsp;
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-hourglass-half"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2分</span>
+        </span>
+    </span>
+</div>
+ 
 
           
         
@@ -501,11 +562,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h4 id="场景引入"><a href="#场景引入" class="headerlink" title="场景引入"></a>场景引入</h4><p>假设现在我们要做一个需求，如下图：</p>
-<p><img src="https://i.loli.net/2019/12/02/hgPUkYzpKZOGdLT.gif" alt="需求动图"></p>
+      <p>今天在用nodejs写登录注册时候遇到了一个问题，我想实现用户在注册时，如果用户名不为空，失去焦点后发送ajax与mongo数据库中的数据进行对比，数据库中没有用户输入的用户名则显示可用，效果如下：</p>
+<p><img src="https://i.loli.net/2019/12/02/oi3yA2BMu7JLhwq.gif" alt="GIF.gif"></p>
       
         <div class="readmore">
-          <a href="/2018/10/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%A7%94%E6%89%98%E6%A8%A1%E5%BC%8F/" class="flat-box">
+          <a href="/2018/11/23/%E8%AE%B0%E5%BD%95%E5%85%B3%E4%BA%8E%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E7%9A%84%E5%B0%8F%E5%9D%91/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -515,7 +576,7 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/%E5%A7%94%E6%89%98%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 委托模式</a>
+          <a href="/tags/%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 路由拦截</a>
         
       </div>
     
@@ -538,8 +599,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/10/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E7%99%BB%E9%99%86%E7%AD%96%E7%95%A5/">
-      设计模式——登陆策略
+    <a href="/2018/11/16/%E5%A4%84%E7%90%86%E6%8A%A5%E9%94%99%EF%BC%9ARouter-use-requires-a-middleware-function-but-got-a-string/">
+      处理报错：Router.use() requires a middleware function but got a string
     </a>
   </h2>
 
@@ -569,7 +630,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-10-30</p>
+    <p>2018-11-16</p>
   </a>
 </div>
 
@@ -579,12 +640,35 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
+    <a href='/categories/nodejs/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>设计模式</p>
+      <p>nodejs</p>
     </a>
   </div>
 
+
+          
+        
+          
+             
+<div style="margin-right: 10px;">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-keyboard"></i>
+            <span class="post-meta-item-text"> 字数统计: </span>
+            <span class="post-count">313字</span>
+        </span>
+    </span>
+    &nbsp; | &nbsp;
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-hourglass-half"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1分</span>
+        </span>
+    </span>
+</div>
+ 
 
           
         
@@ -603,11 +687,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h4 id="场景引入"><a href="#场景引入" class="headerlink" title="场景引入"></a>场景引入</h4><p>在网页中，当我们在注册一个账号，也就是填写表单的时候，经常会看到一个效果：比如输入了用户名过后，再点击密码框想设置密码，这时网页会检测你的用户名是否合法，是否符合要求（如下图）。</p>
-<p><img src="https://i.loli.net/2019/12/02/ZKM6XcD4xLGAhi1.jpg" alt="form.jpg"></p>
+      <p>今天在配置nodejs时出现了一个问题如下图所示：</p>
+<p><img src="https://i.loli.net/2019/12/02/ykE4RJ5osVfv6za.jpg" alt="问题动图"></p>
       
         <div class="readmore">
-          <a href="/2018/10/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E7%99%BB%E9%99%86%E7%AD%96%E7%95%A5/" class="flat-box">
+          <a href="/2018/11/16/%E5%A4%84%E7%90%86%E6%8A%A5%E9%94%99%EF%BC%9ARouter-use-requires-a-middleware-function-but-got-a-string/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -617,9 +701,7 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 表单验证</a>
-        
-          <a href="/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 策略模式</a>
+          <a href="/tags/%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 报错处理</a>
         
       </div>
     
@@ -642,8 +724,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/10/28/%E5%85%A5%E5%9D%91%E8%AE%B0/">
-      入坑记
+    <a href="/2018/11/14/%E5%8E%9F%E7%94%9F%E5%AE%9E%E7%8E%B0ES5%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
+      原生实现ES5数组方法
     </a>
   </h2>
 
@@ -673,7 +755,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-10-28</p>
+    <p>2018-11-14</p>
   </a>
 </div>
 
@@ -683,12 +765,35 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E9%9A%8F%E7%AC%94/' rel="nofollow">
+    <a href='/categories/ES5/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>随笔</p>
+      <p>ES5</p>
     </a>
   </div>
 
+
+          
+        
+          
+             
+<div style="margin-right: 10px;">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-keyboard"></i>
+            <span class="post-meta-item-text"> 字数统计: </span>
+            <span class="post-count">448字</span>
+        </span>
+    </span>
+    &nbsp; | &nbsp;
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="fa fa-hourglass-half"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2分</span>
+        </span>
+    </span>
+</div>
+ 
 
           
         
@@ -707,10 +812,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h4 id="伪前言"><a href="#伪前言" class="headerlink" title="伪前言"></a>伪前言</h4><p>前言听起来好像是书中才应该有的东西，但是因为这是这篇博客中的第一篇，想写个开头，实在是不知道应该用什么小标题了，于是起了个“伪前言”。我记得在大二下学期自学前端刚开始的时候，学会了一点简单的切图和布局，想做一个自己的博客，于是在腾讯云上买了一年的域名权限（花了我10多块大洋），还买了服务器（这个忘记怎么收费的了），跟着流程一直到了备案照相，腾讯发过来印有他们公司logo的幕布，但是后来又因为一些其他事情加上找实习，这件事就没再继续了，当时还以为能切个图，买个服务器弄个域名一上传就完了，结果怎么弄都没有成功。
+      <h6 id="indexOf、lastIndexOf"><a href="#indexOf、lastIndexOf" class="headerlink" title="indexOf、lastIndexOf"></a>indexOf、lastIndexOf</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// indexOf</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="built_in">Array</span>.prototype.indexOf) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">Array</span>.prototype.indexOf = <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>[i] === item) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2018/10/28/%E5%85%A5%E5%9D%91%E8%AE%B0/" class="flat-box">
+          <a href="/2018/11/14/%E5%8E%9F%E7%94%9F%E5%AE%9E%E7%8E%B0ES5%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -720,7 +825,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/%E5%85%A5%E5%9D%91/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 入坑</a>
+          <a href="/tags/%E5%85%BC%E5%AE%B9/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 兼容</a>
+        
+          <a href="/tags/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 数组方法</a>
         
       </div>
     
@@ -745,8 +852,14 @@
             </a>
           
           <p class="current">
-            2 / 2
+            2 / 3
           </p>
+          
+            <a class="next" rel="next" href="/page/3/">
+              <section class="post next">
+                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </section>
+            </a>
           
         </div>
       </div>

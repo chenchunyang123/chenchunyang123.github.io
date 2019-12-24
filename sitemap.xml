@@ -8,6 +8,11 @@
     </sitemap>
 
     <sitemap>
+        <loc>http://chenchunyang.site/page-sitemap.xml</loc>
+        <lastmod>2019-12-24T10:00:03.559Z</lastmod>
+    </sitemap>
+
+    <sitemap>
         <loc>http://chenchunyang.site/category-sitemap.xml</loc>
         <lastmod>2019-12-20T02:12:59.911Z</lastmod>
     </sitemap>
