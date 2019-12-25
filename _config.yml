@@ -109,6 +109,8 @@ leancloud:
 
 sitemap:
     path: sitemap.xml
+    tag: false
+    category: false
 
 word_count: true
 
