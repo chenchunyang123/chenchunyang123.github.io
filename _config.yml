@@ -124,4 +124,6 @@ feed:
 type: atom
 path: atom.xml
 limit: 20
-# test
+
+# 百度统计的key
+baidu_analytics_key: d7f8ec09f38b34be673b5701b3cfe4b4
