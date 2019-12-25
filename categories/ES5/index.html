@@ -219,23 +219,23 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/http:/chenchunyang.site/notes/dist/"
+							<a class="nav flat-box" href="/notes/dist/"
                 
                 
                   target="true"
                 
-                id="http:chenchunyang.sitenotesdist">
+                id="notesdist">
 								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/blog/archives/"
+							<a class="nav flat-box" href="/archives/"
                 
                   rel="nofollow"
                 
                 
-                id="blogarchives">
+                id="archives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
 							</a>
             </li>
@@ -311,7 +311,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/11/14/%E5%8E%9F%E7%94%9F%E5%AE%9E%E7%8E%B0ES5%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
+    <a href="/2018/11/14/06-Array-method-of-es5/">
       原生实现ES5数组方法
     </a>
   </h2>
@@ -362,25 +362,7 @@
           
         
           
-             
-<div style="margin-right: 10px;">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="fa fa-keyboard"></i>
-            <span class="post-meta-item-text"> 字数统计: </span>
-            <span class="post-count">448字</span>
-        </span>
-    </span>
-    &nbsp; | &nbsp;
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="fa fa-hourglass-half"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分</span>
-        </span>
-    </span>
-</div>
- 
+              
 
           
         
@@ -399,10 +381,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h6 id="indexOf、lastIndexOf"><a href="#indexOf、lastIndexOf" class="headerlink" title="indexOf、lastIndexOf"></a>indexOf、lastIndexOf</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// indexOf</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="built_in">Array</span>.prototype.indexOf) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">Array</span>.prototype.indexOf = <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>[i] === item) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+      <h6 id="indexOf、lastIndexOf"><a href="#indexOf、lastIndexOf" class="headerlink" title="indexOf、lastIndexOf"></a>indexOf、lastIndexOf</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// indexOf</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.indexOf) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">Array</span>.prototype.indexOf = <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>[i] === item) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2018/11/14/%E5%8E%9F%E7%94%9F%E5%AE%9E%E7%8E%B0ES5%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" class="flat-box">
+          <a href="/2018/11/14/06-Array-method-of-es5/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -716,8 +698,8 @@
       rel="nofollow"
     
     
-    href="/blog/categories/"
-    title="blog/categories/">
+    href="/categories/"
+    title="categories/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>
@@ -787,15 +769,6 @@
     
 <header class='pure'>
   <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
-  
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/blog/tags/"
-    title="blog/tags/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>
 

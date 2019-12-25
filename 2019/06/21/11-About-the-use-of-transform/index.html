@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>记录关于路由拦截的小坑 | 一条放了盐的鱼</title>
+  <title>开发中关于transfrom缩放的一次应用 | 一条放了盐的鱼</title>
   
   
   <meta name="description" content="前端博客，笔记，解决方案">
@@ -219,23 +219,23 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/http:/chenchunyang.site/notes/dist/"
+							<a class="nav flat-box" href="/notes/dist/"
                 
                 
                   target="true"
                 
-                id="http:chenchunyang.sitenotesdist">
+                id="notesdist">
 								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/blog/archives/"
+							<a class="nav flat-box" href="/archives/"
                 
                   rel="nofollow"
                 
                 
-                id="blogarchives">
+                id="archives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
 							</a>
             </li>
@@ -298,8 +298,8 @@
         
   
     <h1 class="title">
-      <a href="/2018/11/23/%E8%AE%B0%E5%BD%95%E5%85%B3%E4%BA%8E%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E7%9A%84%E5%B0%8F%E5%9D%91/">
-        记录关于路由拦截的小坑
+      <a href="/2019/06/21/11-About-the-use-of-transform/">
+        开发中关于transfrom缩放的一次应用
       </a>
     </h1>
   
@@ -330,7 +330,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-11-23</p>
+    <p>2019-06-21</p>
   </a>
 </div>
 
@@ -340,9 +340,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/nodejs/' rel="nofollow">
+    <a href='/categories/css/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>nodejs</p>
+      <p>css</p>
     </a>
   </div>
 
@@ -382,15 +382,11 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>今天在用nodejs写登录注册时候遇到了一个问题，我想实现用户在注册时，如果用户名不为空，失去焦点后发送ajax与mongo数据库中的数据进行对比，数据库中没有用户输入的用户名则显示可用，效果如下：</p>
-<p><img src="https://i.loli.net/2019/12/02/oi3yA2BMu7JLhwq.gif" alt="GIF.gif"></p>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在做项目上的登陆注册页面时，设计图给的是 1920×1080 的尺寸，当后来要加一行表单时就遇到了一个显示上问题。</p>
 <a id="more"></a>
-<p>虽然我后来已经实现了，但是当我不知道又弄了哪里的时候，数据不能从后台返回来了。触发验证用户名的事件后，并没有对应的事件发生。<br><img src="https://i.loli.net/2019/12/02/8HgvS2UMY4bqWDt.jpg" alt="1.jpg"><br>一开始，我怀疑是后台“检查用户名”的接口有问题，但是扫了一遍过后并没有发现哪里不对，我又尝试着去后台打印要接收的用户名，结果后台根本没有接收到，那也就是说前台可能并没有发送过来，前台又找了很久，理了一遍逻辑，也没有发现问题= =，不知所措的我在网页中打开了F12，看看network中触发事件的时候会有什么请求，结果发现除了一个checkName请求（我们需要的），还多了一个login请求，这是什么东西？？<br><img src="https://i.loli.net/2019/12/02/Il6Bodq9vTWSjEF.jpg" alt="2.jpg"><br>请求中多了一个login，那大概可以确定是这个影响了检查用户名，回想起来之前在”注册”里写的逻辑代码并没有请求这个= =。又看了该页面前端和后端的逻辑，还是没有发现在哪个地方请求了它。</p>
-<hr>
-<p>就在我抓耳挠腮时，我突然想到了之前又配置了一个路由拦截器，如果session里面没有用户登录的数据，则让他直接跳转到登录页面，于是我就在路由配置里把下面这段代码注释掉了：<br><img src="https://i.loli.net/2019/12/02/cmd9D3MC2SltQLW.jpg" alt="3.jpg"><br>果然，一切恢复正常，接着又仔细思考了一下原因：我写这个路由拦截器的目的是防止用户没有登录就直接通过输入url进入其他页面，拦截的是get请求，同时如果我没有登录，在注册验证用户名的时候，同样也是一个get请求，那么该拦截器就会对这个请求进行拦截，并尝试跳转到login界面。在思考清楚了问题过后，我确定再加一个判断，不拦截验证用户名的get请求：<br>工具函数：<br><img src="https://i.loli.net/2019/12/02/NwKernufsYdjxO6.jpg" alt="4.jpg"><br>升级过后的路由拦截器：<br><img src="https://i.loli.net/2019/12/02/MaRHkqyCDc6zAVJ.jpg" alt="5.jpg"></p>
-<p>心得体会：<br>1、多用F12，在无法确定代码问题的时候，它真的很好用。<br>2、路由拦截时不能过于暴力，如果项目很大，考虑的情况比较多的话，那就要防止拦截到不该拦截的路由。</p>
-<hr>
-<p>November 26, 2018 11:22 AM    更新<br>其实还有一种更简单的办法，就是将不需要拦截的请求放到拦截器的上面，因为js是从上往下执行的，只要让它能在拦截器的前面执行就可以。</p>
+
+<p>如下图：<br><img src="https://i.loli.net/2019/12/02/2cwzlXgOd7LEUD9.jpg" alt="1.jpg"><br>在之前一版没加‘验证码’表单项时，在笔记本上还能够勉强都显示出来，但是再加一行过后，明显已经超过浏览器的显示范围了，这对于用户体验来说很不友好。<br>其实如果是在正规的 1920*1080 分辨率的屏幕下，显示效果很好，但是笔记本用户一般会对电脑显示进行放大，且一般为 125%，所以就会出现这种情况。</p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>最开始考虑针对这个分辨率再写一套媒体查询的样式，或者全改为自适应尺寸大小，但是这样做工作量其实比较大，也不是很好改。后来考虑能不能单独对这个页面进行缩小显示，便找到了 zoom 属性，单独设置右边表单盒子的 zoom。<br>渲染的时候先用 window.document.documentElement.clientHeight 读取到页面的高度，当这个高度小于 950 的时候，加上 zoom：0.8，但是这时候又遇到了一个新的问题：在 ie 和 chrome 下支持，在 firefox 下不起作用。<br>于是马上打开百度搜索，在看过几个答案过后，得出一个结论：zoom 确实存在兼容性问题，但是可以用 transform: scale(0.8)搭配 transform-origin：‘center center’来解决 firefox 下不起作用的问题（不过最后因为不用考虑 ie 低版本，所以直接舍弃掉 zoom 属性，统一用 transform：scale(0.8)以及 transform-origin：‘center center’来改变样式）。<br>最后在 125%缩放的笔记本显示效果如下：<br><img src="https://i.loli.net/2019/12/02/MaXqKAEQ3LVwkNF.jpg" alt="2.jpg"></p>
 
       </div>
       
@@ -402,16 +398,16 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2018/11/26/gulp%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="gulp工程化及一些常用插件的使用">
+                              <a href="/2019/06/26/12-Test-questions-of-javascript/" rel="prev" title="（转）43道js进阶测试题">
                                 
-                                    gulp工程化及一些常用插件的使用
+                                    （转）43道js进阶测试题
                                 
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 常用插件</a>
+                                  <a class="tag" href="/tags/js%E8%BF%9B%E9%98%B6/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> js进阶</a>
                               </h6>
                           
                       </span>
@@ -422,16 +418,16 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2018/11/16/%E5%A4%84%E7%90%86%E6%8A%A5%E9%94%99%EF%BC%9ARouter-use-requires-a-middleware-function-but-got-a-string/" rel="prev" title="处理报错：Router.use() requires a middleware function but got a string">
+                              <a href="/2019/05/20/10-Based-on-fetch-packaging-method/" rel="prev" title="基于fetch封装的下载文件代码">
                                   
-                                      处理报错：Router.use() requires a middleware function but got a string
+                                      基于fetch封装的下载文件代码
                                   
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 报错处理</a>
+                                  <a class="tag" href="/tags/%E5%B0%81%E8%A3%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 封装</a>
                               </h6>
                           
                       </span>
@@ -692,8 +688,8 @@
       rel="nofollow"
     
     
-    href="/blog/categories/"
-    title="blog/categories/">
+    href="/categories/"
+    title="categories/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>

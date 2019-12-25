@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>迭代器（jq、underscore、es5、自建） | 一条放了盐的鱼</title>
+  <title>我的收藏 | 一条放了盐的鱼</title>
   
   
   <meta name="description" content="前端博客，笔记，解决方案">
@@ -219,23 +219,23 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/http:/chenchunyang.site/notes/dist/"
+							<a class="nav flat-box" href="/notes/dist/"
                 
                 
                   target="true"
                 
-                id="http:chenchunyang.sitenotesdist">
+                id="notesdist">
 								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/blog/archives/"
+							<a class="nav flat-box" href="/archives/"
                 
                   rel="nofollow"
                 
                 
-                id="blogarchives">
+                id="archives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
 							</a>
             </li>
@@ -298,8 +298,8 @@
         
   
     <h1 class="title">
-      <a href="/2018/11/03/%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88jq%E3%80%81underscore%E3%80%81es5%E3%80%81%E8%87%AA%E5%BB%BA%EF%BC%89/">
-        迭代器（jq、underscore、es5、自建）
+      <a href="/2019/09/02/14-My-collection/">
+        我的收藏
       </a>
     </h1>
   
@@ -330,7 +330,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-11-03</p>
+    <p>2019-09-02</p>
   </a>
 </div>
 
@@ -340,9 +340,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%BD%92%E7%BA%B3/' rel="nofollow">
+    <a href='/categories/%E6%94%B6%E8%97%8F/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>归纳</p>
+      <p>收藏</p>
     </a>
   </div>
 
@@ -382,21 +382,19 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h5 id="Jq中的迭代器"><a href="#Jq中的迭代器" class="headerlink" title="Jq中的迭代器"></a>Jq中的迭代器</h5><h6 id="dom结构"><a href="#dom结构" class="headerlink" title="dom结构"></a>dom结构</h6><p><img src="https://i.loli.net/2019/12/02/YlosBPycev8Z5MJ.jpg" alt="jq1.jpg"></p>
-<a id="more"></a>
+        <h4 id="学习项目"><a href="#学习项目" class="headerlink" title="学习项目"></a>学习项目</h4><ul>
+<li>可视化学习 git：<strong><a href="https://learngitbranching.js.org/" target="_blank" rel="noopener">https://learngitbranching.js.org/</a></strong></li>
+<li>可视化学习 flex 布局：<strong><a href="http://flexboxfroggy.com/#zh-cn" target="_blank" rel="noopener">http://flexboxfroggy.com/#zh-cn</a></strong></li>
+</ul>
+<h4 id="实用库"><a href="#实用库" class="headerlink" title="实用库"></a>实用库</h4><ul>
+<li>vis 可视化库：<strong><a href="https://visjs.org/index.html" target="_blank" rel="noopener">https://visjs.org/index.html</a></strong> （易上手，配置丰富，用来实现有向图不错）</li>
+<li>js 函数工具库：<strong><a href="https://www.lodashjs.com/" target="_blank" rel="noopener">https://www.lodashjs.com/</a></strong> （丰富的 api，封装了很多常用的工具函数）<a id="more"></a>
 
-<h6 id="js方法"><a href="#js方法" class="headerlink" title="js方法"></a>js方法</h6><p><img src="https://i.loli.net/2019/12/02/hMGcsWezUQr7SxJ.jpg" alt="jq2.jpg"></p>
-<h6 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h6><p><img src="https://i.loli.net/2019/12/02/9Nm1khVTLdtwncA.jpg" alt="jq3.jpg">（省略后面重复部分）</p>
-<h6 id="定义一个数组及遍历"><a href="#定义一个数组及遍历" class="headerlink" title="定义一个数组及遍历"></a>定义一个数组及遍历</h6><p><img src="https://i.loli.net/2019/12/02/uBkgNWGepob2Qa4.jpg" alt="jq4.jpg"><br>输出：（this的实质就是每一次遍历到的value的数字包装类型）<br><img src="https://i.loli.net/2019/12/02/oYEeqQKiX7CuS5r.jpg" alt="jq5.jpg"></p>
-<hr>
-<h5 id="underscore中的迭代器"><a href="#underscore中的迭代器" class="headerlink" title="underscore中的迭代器"></a>underscore中的迭代器</h5><h6 id="定义一个数组及遍历-1"><a href="#定义一个数组及遍历-1" class="headerlink" title="定义一个数组及遍历"></a>定义一个数组及遍历</h6><p><img src="https://i.loli.net/2019/12/02/5BrsMNnmkD1gISi.jpg" alt="jq6.jpg"><br>输出：<br><img src="https://i.loli.net/2019/12/02/1IdmP5ChsLJYFof.jpg" alt="jq7.jpg"></p>
-<hr>
-<h5 id="es5中的迭代器"><a href="#es5中的迭代器" class="headerlink" title="es5中的迭代器"></a>es5中的迭代器</h5><h6 id="定义一个数组及遍历-2"><a href="#定义一个数组及遍历-2" class="headerlink" title="定义一个数组及遍历"></a>定义一个数组及遍历</h6><p><img src="https://i.loli.net/2019/12/02/CwGAkXojhZqdacP.jpg" alt="jq8.jpg"><br>输出：<br><img src="https://i.loli.net/2019/12/02/WAEzJIsuRhramyX.jpg" alt="jq9.jpg"></p>
-<hr>
-<h5 id="自己的迭代器"><a href="#自己的迭代器" class="headerlink" title="自己的迭代器"></a>自己的迭代器</h5><h6 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h6><p>定义一个函数，该函数可以实现对数组和对象的遍历。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * each函数 实现迭代器</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * @target 要遍历的目标</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * @fn     要执行的函数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> **/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">each</span>(<span class="params">target, fn</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 判断传递的target是数组还是对象</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span> (target <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		<span class="comment">// 说明传递的是数组</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; target.length; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">			<span class="comment">// 执行fn</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">			fn.call(target[i], target[i], i, target);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(target) === <span class="string">"[object Object]"</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> target) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">			<span class="comment">// 传递二个参数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">			fn.call(target[i], target[i], i);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<h6 id="数组遍历结果"><a href="#数组遍历结果" class="headerlink" title="数组遍历结果"></a>数组遍历结果</h6><p><img src="https://i.loli.net/2019/12/02/HhceLd8EI74GTnN.jpg" alt="jq10.jpg"><br><img src="https://i.loli.net/2019/12/02/gyPu7avIGVr1C3o.jpg" alt="jq11.jpg"></p>
-<h6 id="对象遍历结果"><a href="#对象遍历结果" class="headerlink" title="对象遍历结果"></a>对象遍历结果</h6><p><img src="https://i.loli.net/2019/12/02/YT6RH9BsftuOzlW.jpg" alt="jq12.jpg"><br><img src="https://i.loli.net/2019/12/02/WQMrd6F7cgna9xV.jpg" alt="jq13.jpg"></p>
+</li>
+</ul>
+<h4 id="好文"><a href="#好文" class="headerlink" title="好文"></a>好文</h4><ul>
+<li>数据结构和算法：<strong><a href="https://juejin.im/post/5d5b307b5188253da24d3cd1#heading-51" target="_blank" rel="noopener">https://juejin.im/post/5d5b307b5188253da24d3cd1#heading-51</a></strong> （有学习路径，有案例）</li>
+</ul>
 
       </div>
       
@@ -409,10 +407,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-04T17:19:32+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-25T16:00:32+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2019年12月4日</p>
+    <p>更新于 2019年12月25日</p>
   </a>
 </div>
 
@@ -421,7 +419,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%96%B9%E6%B3%95/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>迭代器方法</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%9E%E7%94%A8%E5%BA%93/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>实用库</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%A5%BD%E6%96%87/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>好文</p></a></div>
 
 
         
@@ -434,7 +432,13 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://chenchunyang.site/2018/11/03/%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88jq%E3%80%81underscore%E3%80%81es5%E3%80%81%E8%87%AA%E5%BB%BA%EF%BC%89/&title=迭代器（jq、underscore、es5、自建） | 一条放了盐的鱼&summary=Jq中的迭代器dom结构"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://chenchunyang.site/2019/09/02/14-My-collection/&title=我的收藏 | 一条放了盐的鱼&summary=学习项目
+可视化学习 git：https://learngitbranching.js.org/
+可视化学习 flex 布局：http://flexboxfroggy.com/#zh-cn
+
+实用库
+vis 可视化库：https://visjs.org/index.html （易上手，配置丰富，用来实现有向图不错）
+js 函数工具库：https://www.lodashjs.com/ （丰富的 api，封装了很多常用的工具函数）"
           
           >
           
@@ -446,7 +450,13 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://chenchunyang.site/2018/11/03/%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88jq%E3%80%81underscore%E3%80%81es5%E3%80%81%E8%87%AA%E5%BB%BA%EF%BC%89/&title=迭代器（jq、underscore、es5、自建） | 一条放了盐的鱼&summary=Jq中的迭代器dom结构"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://chenchunyang.site/2019/09/02/14-My-collection/&title=我的收藏 | 一条放了盐的鱼&summary=学习项目
+可视化学习 git：https://learngitbranching.js.org/
+可视化学习 flex 布局：http://flexboxfroggy.com/#zh-cn
+
+实用库
+vis 可视化库：https://visjs.org/index.html （易上手，配置丰富，用来实现有向图不错）
+js 函数工具库：https://www.lodashjs.com/ （丰富的 api，封装了很多常用的工具函数）"
           
           >
           
@@ -458,7 +468,13 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://chenchunyang.site/2018/11/03/%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88jq%E3%80%81underscore%E3%80%81es5%E3%80%81%E8%87%AA%E5%BB%BA%EF%BC%89/&title=迭代器（jq、underscore、es5、自建） | 一条放了盐的鱼&summary=Jq中的迭代器dom结构"
+          href="http://service.weibo.com/share/share.php?url=http://chenchunyang.site/2019/09/02/14-My-collection/&title=我的收藏 | 一条放了盐的鱼&summary=学习项目
+可视化学习 git：https://learngitbranching.js.org/
+可视化学习 flex 布局：http://flexboxfroggy.com/#zh-cn
+
+实用库
+vis 可视化库：https://visjs.org/index.html （易上手，配置丰富，用来实现有向图不错）
+js 函数工具库：https://www.lodashjs.com/ （丰富的 api，封装了很多常用的工具函数）"
           
           >
           
@@ -486,16 +502,16 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2018/11/14/%E5%8E%9F%E7%94%9F%E5%AE%9E%E7%8E%B0ES5%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" rel="prev" title="原生实现ES5数组方法">
+                              <a href="/2019/12/04/15-Start-the-node-service/" rel="prev" title="腾讯云服务器（win）开启node后台服务流程及问题">
                                 
-                                    原生实现ES5数组方法
+                                    腾讯云服务器（win）开启node后台服务流程及问题
                                 
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E5%85%BC%E5%AE%B9/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 兼容</a> <a class="tag" href="/tags/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 数组方法</a>
+                                  <a class="tag" href="/tags/node/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> node</a>
                               </h6>
                           
                       </span>
@@ -506,16 +522,16 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2018/10/30/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%BB%93%E5%90%88seajs%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%B0%8F%E5%AE%9E%E4%BE%8B/" rel="prev" title="观察者模式结合seajs模块化的小实例">
+                              <a href="/2019/07/09/13-Implementing-applications-with-hook/" rel="prev" title="hook实现todolist">
                                   
-                                      观察者模式结合seajs模块化的小实例
+                                      hook实现todolist
                                   
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 观察者模式</a>
+                                  <a class="tag" href="/tags/hook%E8%AF%AD%E6%B3%95/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> hook语法</a>
                               </h6>
                           
                       </span>
@@ -559,7 +575,7 @@
 
   <script>
     window.subData = {
-      title: '迭代器（jq、underscore、es5、自建）',
+      title: '我的收藏',
       tools: true
     }
   </script>
@@ -681,7 +697,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Jq中的迭代器"><span class="toc-text">Jq中的迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#dom结构"><span class="toc-text">dom结构</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#js方法"><span class="toc-text">js方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#定义一个数组及遍历"><span class="toc-text">定义一个数组及遍历</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#underscore中的迭代器"><span class="toc-text">underscore中的迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#定义一个数组及遍历-1"><span class="toc-text">定义一个数组及遍历</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#es5中的迭代器"><span class="toc-text">es5中的迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#定义一个数组及遍历-2"><span class="toc-text">定义一个数组及遍历</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自己的迭代器"><span class="toc-text">自己的迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组遍历结果"><span class="toc-text">数组遍历结果</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#对象遍历结果"><span class="toc-text">对象遍历结果</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#学习项目"><span class="toc-text">学习项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实用库"><span class="toc-text">实用库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#好文"><span class="toc-text">好文</span></a></li></ol>
     </div>
   </section>
 
@@ -797,8 +813,8 @@
       rel="nofollow"
     
     
-    href="/blog/categories/"
-    title="blog/categories/">
+    href="/categories/"
+    title="categories/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>

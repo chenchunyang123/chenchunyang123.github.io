@@ -219,23 +219,23 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/http:/chenchunyang.site/notes/dist/"
+							<a class="nav flat-box" href="/notes/dist/"
                 
                 
                   target="true"
                 
-                id="http:chenchunyang.sitenotesdist">
+                id="notesdist">
 								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/blog/archives/"
+							<a class="nav flat-box" href="/archives/"
                 
                   rel="nofollow"
                 
                 
-                id="blogarchives">
+                id="archives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
 							</a>
             </li>
@@ -298,7 +298,7 @@
         
   
     <h1 class="title">
-      <a href="/2018/11/26/gulp%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      <a href="/2018/11/26/09-Engineering-of-gulp/">
         gulp工程化及一些常用插件的使用
       </a>
     </h1>
@@ -382,17 +382,18 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>所谓的工程化就是将写完的代码进行压缩合并等操作。<br>gulp是一个工程化工具，代码在书写完毕之前，需要有回车换行空白符等内容。但是一旦书写完毕，交给浏览器运行时，这些内容没有用。需要移除。<br>此时有两种方案：</p>
+        <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>所谓的工程化就是将写完的代码进行压缩合并等操作。<br>gulp 是一个工程化工具，代码在书写完毕之前，需要有回车换行空白符等内容。但是一旦书写完毕，交给浏览器运行时，这些内容没有用。需要移除。<br>此时有两种方案：</p>
 <a id="more"></a>
+
 <blockquote>
 <p>1、人工移除，就是由人手工删除回车、换行、空白符。<br>2、使用工具移除。</p>
 </blockquote>
-<p>Gulp就是这样的一个工具，本质上，gulp就是一个NodeJS的第三方模块。</p>
+<p>Gulp 就是这样的一个工具，本质上，gulp 就是一个 NodeJS 的第三方模块。</p>
 <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><blockquote>
-<p>第一次下载： npm install gulp  本地安装 提供模块文件<br>第二次下载： npm install gulp -g 全局安装 提供gulp命令</p>
+<p>第一次下载： npm install gulp 本地安装 提供模块文件<br>第二次下载： npm install gulp -g 全局安装 提供 gulp 命令</p>
 </blockquote>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>gulp的配置文件名是<strong>gulpfile.js</strong>，用于决定处理哪些模块，以及如何处理。<br>写完之后，就可以调用gulp指令执行了。</p>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>gulp是一个模块，在代码中被引入之后得到一个对象，该对象一共有5个API。</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>gulp 的配置文件名是<strong>gulpfile.js</strong>，用于决定处理哪些模块，以及如何处理。<br>写完之后，就可以调用 gulp 指令执行了。</p>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>gulp 是一个模块，在代码中被引入之后得到一个对象，该对象一共有 5 个 API。</p>
 <ol>
 <li>gulp.task</li>
 <li>gulp.src</li>
@@ -404,7 +405,7 @@
 <blockquote>
 <p>语法：gulp.task(taskName, handler);<br>taskName: 任务名称。<br>handler: 对应的任务函数。还可以是数组，如果是数组，数组内的成员是其它任务的名称。</p>
 </blockquote>
-<p><img src="https://i.loli.net/2019/12/02/Z65Uw4dYrzjSXiW.png" alt="1.png"><br>default是具备特殊含义的任务名。表示默认、缺省的意思。是所有任务的开始入口。<br>上面的定义任务表示当任务开始的时候执行的是aaa和bbb任务。</p>
+<p><img src="https://i.loli.net/2019/12/02/Z65Uw4dYrzjSXiW.png" alt="1.png"><br>default 是具备特殊含义的任务名。表示默认、缺省的意思。是所有任务的开始入口。<br>上面的定义任务表示当任务开始的时候执行的是 aaa 和 bbb 任务。</p>
 <h4 id="gulp-src"><a href="#gulp-src" class="headerlink" title="gulp.src"></a>gulp.src</h4><p>该方法用于将物理文件转换成文件流。</p>
 <blockquote>
 <p>gulp.src(filePath);<br>filePath: 表示文件路径的值 有三个可选项</p>
@@ -412,31 +413,31 @@
 <ul>
 <li>可以是字符串 表示单个文件</li>
 <li>可以是数组 表示多个文件</li>
-<li>可以是glob表达式</li>
+<li>可以是 glob 表达式</li>
 </ul>
 <p>返回值：一个对象 该对象所拥有的方法可以决定如何操作目标文件<br><img src="https://i.loli.net/2019/12/02/TUytG8oZOfqXiFh.png" alt="2.png"></p>
-<h4 id="gulp-pipe"><a href="#gulp-pipe" class="headerlink" title="gulp.pipe"></a>gulp.pipe</h4><p>该方法不是gulp拥有的，而是gulp.src执行之后的返回值对象所拥有的。<br>该方法用于定义一次操作。如果有多次操作，那么需要多次调用pipe方法。<br><img src="https://i.loli.net/2019/12/02/1jCOhG7eJaksPK2.png" alt="3.png"><br><strong>红色部分，表示定义了一个操作。<br>蓝色部分，表示具体操作。</strong></p>
-<h4 id="gulp-dest"><a href="#gulp-dest" class="headerlink" title="gulp.dest"></a>gulp.dest</h4><p>该方法用于将流文件转换成物理文件，与src正好相反。</p>
+<h4 id="gulp-pipe"><a href="#gulp-pipe" class="headerlink" title="gulp.pipe"></a>gulp.pipe</h4><p>该方法不是 gulp 拥有的，而是 gulp.src 执行之后的返回值对象所拥有的。<br>该方法用于定义一次操作。如果有多次操作，那么需要多次调用 pipe 方法。<br><img src="https://i.loli.net/2019/12/02/1jCOhG7eJaksPK2.png" alt="3.png"><br><strong>红色部分，表示定义了一个操作。<br>蓝色部分，表示具体操作。</strong></p>
+<h4 id="gulp-dest"><a href="#gulp-dest" class="headerlink" title="gulp.dest"></a>gulp.dest</h4><p>该方法用于将流文件转换成物理文件，与 src 正好相反。</p>
 <blockquote>
 <p>gulp.dest(path);<br>path: 目录路径 表示发布的地址</p>
 </blockquote>
 <p><img src="https://i.loli.net/2019/12/02/puQRfOloMa43AKg.png" alt="4.png"></p>
-<h4 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp.watch"></a>gulp.watch</h4><p>该方法用于监听文件，触发任务。<br>当我们一边写代码，一边工程化时，如果每一次修改代码都需要自己调用gulp命令，会显得很繁琐,此时我们可以使用gulp.watch.</p>
+<h4 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp.watch"></a>gulp.watch</h4><p>该方法用于监听文件，触发任务。<br>当我们一边写代码，一边工程化时，如果每一次修改代码都需要自己调用 gulp 命令，会显得很繁琐,此时我们可以使用 gulp.watch.</p>
 <blockquote>
-<p>gulp.watch(target, handler);<br>target: 目标文件<br><strong>三个可选项</strong>： 文件路径字符串、数组、glob表达式<br>handler: 当目标文件发生改变时，执行的任务<br><strong>两个可选项</strong>： 函数、数组</p>
+<p>gulp.watch(target, handler);<br>target: 目标文件<br><strong>三个可选项</strong>： 文件路径字符串、数组、glob 表达式<br>handler: 当目标文件发生改变时，执行的任务<br><strong>两个可选项</strong>： 函数、数组</p>
 </blockquote>
-<p><img src="https://i.loli.net/2019/12/02/m9LpTkj1UC8t7xB.png" alt="5.png"><br>以上代码表示：当./source/里的所有js文件中任一文件发生变化时，调用update任务。</p>
-<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>gulp本身只有5个API。只依靠它自己，基本什么工程化行为都无法完成，但是它具备大量的插件（这里介绍7个插件）。</p>
-<h4 id="压缩js"><a href="#压缩js" class="headerlink" title="压缩js"></a>压缩js</h4><blockquote>
-<p>插件名称： gulp-uglify<br>作用：压缩JS<br>下载：npm install gulp-uglify</p>
+<p><img src="https://i.loli.net/2019/12/02/m9LpTkj1UC8t7xB.png" alt="5.png"><br>以上代码表示：当./source/里的所有 js 文件中任一文件发生变化时，调用 update 任务。</p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为都无法完成，但是它具备大量的插件（这里介绍 7 个插件）。</p>
+<h4 id="压缩-js"><a href="#压缩-js" class="headerlink" title="压缩 js"></a>压缩 js</h4><blockquote>
+<p>插件名称： gulp-uglify<br>作用：压缩 JS<br>下载：npm install gulp-uglify</p>
 </blockquote>
 <p><img src="https://i.loli.net/2019/12/02/NHAa25f3ncilqjw.png" alt="6.png"></p>
-<h4 id="压缩css"><a href="#压缩css" class="headerlink" title="压缩css"></a>压缩css</h4><blockquote>
-<p>插件名称：gulp-clean-css<br>作用：压缩CSS<br>下载：npm install gulp-clean-css</p>
+<h4 id="压缩-css"><a href="#压缩-css" class="headerlink" title="压缩 css"></a>压缩 css</h4><blockquote>
+<p>插件名称：gulp-clean-css<br>作用：压缩 CSS<br>下载：npm install gulp-clean-css</p>
 </blockquote>
 <p><img src="https://i.loli.net/2019/12/02/FrPXRUnJA72NzHb.png" alt="7.png"></p>
-<h4 id="压缩html"><a href="#压缩html" class="headerlink" title="压缩html"></a>压缩html</h4><blockquote>
-<p>插件名称：gulp-minify-html<br>作用：压缩html<br>下载：npm install gulp-minify-html</p>
+<h4 id="压缩-html"><a href="#压缩-html" class="headerlink" title="压缩 html"></a>压缩 html</h4><blockquote>
+<p>插件名称：gulp-minify-html<br>作用：压缩 html<br>下载：npm install gulp-minify-html</p>
 </blockquote>
 <p><img src="https://i.loli.net/2019/12/02/Ck8su135WAXbht2.png" alt="8.png"></p>
 <h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><blockquote>
@@ -452,13 +453,13 @@
 </blockquote>
 <p><img src="https://i.loli.net/2019/12/02/fvpJZm9A4n1DqV6.png" alt="11.png"></p>
 <h4 id="书写校验"><a href="#书写校验" class="headerlink" title="书写校验"></a>书写校验</h4><blockquote>
-<p>插件名称：gulp-jslint<br>作用： 检验js格式<br>下载： npm install gulp-jslint<br>格式规范：</p>
+<p>插件名称：gulp-jslint<br>作用： 检验 js 格式<br>下载： npm install gulp-jslint<br>格式规范：</p>
 <ul>
-<li>if 右边 一定要有一个空格  </li>
+<li>if 右边 一定要有一个空格</li>
 </ul>
 </blockquote>
 <ul>
-<li>function 的参数列表右圆括号右侧必须要有一个空格 </li>
+<li>function 的参数列表右圆括号右侧必须要有一个空格</li>
 <li>换行使用四个空格缩进</li>
 <li>使用严格模式</li>
 <li>尾巴不能有空格</li>
@@ -476,7 +477,7 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2019/05/20/%E5%9F%BA%E4%BA%8Efetch%E5%B0%81%E8%A3%85%E7%9A%84%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E4%BB%A3%E7%A0%81/" rel="prev" title="基于fetch封装的下载文件代码">
+                              <a href="/2019/05/20/10-Based-on-fetch-packaging-method/" rel="prev" title="基于fetch封装的下载文件代码">
                                 
                                     基于fetch封装的下载文件代码
                                 
@@ -496,7 +497,7 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2018/11/23/%E8%AE%B0%E5%BD%95%E5%85%B3%E4%BA%8E%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E7%9A%84%E5%B0%8F%E5%9D%91/" rel="prev" title="记录关于路由拦截的小坑">
+                              <a href="/2018/11/23/08-Route-interception/" rel="prev" title="记录关于路由拦截的小坑">
                                   
                                       记录关于路由拦截的小坑
                                   
@@ -766,8 +767,8 @@
       rel="nofollow"
     
     
-    href="/blog/categories/"
-    title="blog/categories/">
+    href="/categories/"
+    title="categories/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>开发中关于transfrom缩放的一次应用 | 一条放了盐的鱼</title>
+  <title>设计模式——登陆策略 | 一条放了盐的鱼</title>
   
   
   <meta name="description" content="前端博客，笔记，解决方案">
@@ -51,7 +51,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover b half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>A Salted Fish</h1>
@@ -219,23 +219,23 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/http:/chenchunyang.site/notes/dist/"
+							<a class="nav flat-box" href="/notes/dist/"
                 
                 
                   target="true"
                 
-                id="http:chenchunyang.sitenotesdist">
+                id="notesdist">
 								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/blog/archives/"
+							<a class="nav flat-box" href="/archives/"
                 
                   rel="nofollow"
                 
                 
-                id="blogarchives">
+                id="archives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
 							</a>
             </li>
@@ -286,7 +286,7 @@
       <div class='l_main'>
   
 
-  <article id="b" class="post white-box article-type-b" itemscope itemprop="blogPost">
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
 
 
@@ -298,8 +298,8 @@
         
   
     <h1 class="title">
-      <a href="/2019/06/21/%E5%BC%80%E5%8F%91%E4%B8%AD%E5%85%B3%E4%BA%8Etransform%E7%BC%A9%E6%94%BE%E7%9A%84%E4%B8%80%E6%AC%A1%E5%BA%94%E7%94%A8/">
-        开发中关于transfrom缩放的一次应用
+      <a href="/2018/10/30/02-Login-policy/">
+        设计模式——登陆策略
       </a>
     </h1>
   
@@ -330,7 +330,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-06-21</p>
+    <p>2018-10-30</p>
   </a>
 </div>
 
@@ -340,9 +340,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/css/' rel="nofollow">
+    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>css</p>
+      <p>设计模式</p>
     </a>
   </div>
 
@@ -382,13 +382,111 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在做项目上的登陆注册页面时，设计图给的是1920×1080的尺寸，当后来要加一行表单时就遇到了一个显示上问题。</p>
+        <h4 id="场景引入"><a href="#场景引入" class="headerlink" title="场景引入"></a>场景引入</h4><p>在网页中，当我们在注册一个账号，也就是填写表单的时候，经常会看到一个效果：比如输入了用户名过后，再点击密码框想设置密码，这时网页会检测你的用户名是否合法，是否符合要求（如下图）。</p>
+<p><img src="https://i.loli.net/2019/12/02/ZKM6XcD4xLGAhi1.jpg" alt="form.jpg"></p>
 <a id="more"></a>
-<p>如下图：<br><img src="https://i.loli.net/2019/12/02/2cwzlXgOd7LEUD9.jpg" alt="1.jpg"><br>在之前一版没加‘验证码’表单项时，在笔记本上还能够勉强都显示出来，但是再加一行过后，明显已经超过浏览器的显示范围了，这对于用户体验来说很不友好。<br>其实如果是在正规的1920*1080分辨率的屏幕下，显示效果很好，但是笔记本用户一般会对电脑显示进行放大，且一般为125%，所以就会出现这种情况。</p>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>最开始考虑针对这个分辨率再写一套媒体查询的样式，或者全改为自适应尺寸大小，但是这样做工作量其实比较大，也不是很好改。后来考虑能不能单独对这个页面进行缩小显示，便找到了zoom属性，单独设置右边表单盒子的zoom。<br>渲染的时候先用window.document.documentElement.clientHeight读取到页面的高度，当这个高度小于950的时候，加上zoom：0.8，但是这时候又遇到了一个新的问题：在ie和chrome下支持，在firefox下不起作用。<br>于是马上打开百度搜索，在看过几个答案过后，得出一个结论：zoom确实存在兼容性问题，但是可以用transform: scale(0.8)搭配transform-origin：‘center center’来解决firefox下不起作用的问题（不过最后因为不用考虑ie低版本，所以直接舍弃掉zoom属性，统一用transform：scale(0.8)以及transform-origin：‘center center’来改变样式）。<br>最后在125%缩放的笔记本显示效果如下：<br><img src="https://i.loli.net/2019/12/02/MaXqKAEQ3LVwkNF.jpg" alt="2.jpg"></p>
+
+<hr>
+<h4 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h4><p>针对这个效果，我们可以对用户名输入框设置一个失去焦点的事件，并且在失去焦点的时候对输入的内容进行正则匹配，不匹配则报错。</p>
+<hr>
+<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取元素</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> username = <span class="built_in">document</span>.getElementById(<span class="string">"username"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 失去焦点之后检测内容的合法性</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">username.onblur = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 获取用户输入的内容</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">var</span> val = <span class="keyword">this</span>.value;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 定义正则表达式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">var</span> reg = <span class="regexp">/^[a-zA-Z]+$/g</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 验证</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span> (reg.test(val)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">		<span class="built_in">console</span>.log(<span class="string">"恭喜你, 通过了"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	&#125; <span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">		<span class="built_in">console</span>.log(<span class="string">"请输入纯英文"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr></table></figure>
+
+<p>这个思路还是很好想到的，但是突然有一天，我们又得到一个需求，要对 100 个表单都进行验证。虽然按照这个思路一个一个地写，一个一个地复制粘贴也没有问题，但是未免效率太低了，这时候就需要进行优化！</p>
+<hr>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p>先说说 jQery 中的运用到的策略模式，如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"js/jquery-1.7.2.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"js/jquery.easing.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用animate函数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#box1"</span>).animate(&#123;<span class="attr">left</span>: <span class="number">1000</span>&#125;, <span class="number">1000</span>, <span class="string">"easeInOutBack"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#box2"</span>).animate(&#123;<span class="attr">left</span>: <span class="number">1000</span>&#125;, <span class="number">1000</span>, <span class="string">"easeInOutElastic"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#box3"</span>).animate(&#123;<span class="attr">left</span>: <span class="number">1000</span>&#125;, <span class="number">1000</span>, <span class="string">"easeInElastic"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&lt;<span class="regexp">/script&gt;</span></span></pre></td></tr></table></figure>
+
+<p>它把一些运动的方式写到了 easing.js 中，当我们去给盒子定义动画的时候<br>不用再去一个一个书写，想用哪种效果就直接在 animate 函数第三个参数写上“名字”。<br>按照这种想法，我们在进行表单验证时，也把特定的验证方式封装成一个对象里的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义对象</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Strategy = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> s = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        chunyingwen: <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">// 定义正则表达式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">var</span> reg = <span class="regexp">/^[a-zA-Z]+$/g</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">// 验证</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (reg.test(str)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> <span class="string">'通过'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            &#125; <span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> <span class="string">'请输入纯英文'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        chunshuzi: <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">// 定义正则匹配</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">var</span> reg = <span class="regexp">/^\d+$/g</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">// 验证</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (reg.test(num)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> <span class="string">'通过'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">            &#125; <span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> <span class="string">'请输入纯数字'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    &#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 定义接口</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">        use: <span class="function"><span class="keyword">function</span>(<span class="params">type, str</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> s[type](str);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    &#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">&#125;)();</span></pre></td></tr></table></figure>
+
+<p>接下来再进行验证的时候就简单了，用哪种方法直接引入该对象下的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 失去焦点之后检测内容的合法性</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">username.onblur = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> result = Strategy.use(<span class="string">'chunshuzi'</span>, <span class="keyword">this</span>.value);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr></table></figure>
+
+<p>所以整体来说策略模式就是把特定的方法都提取出来，封装在一个对象下的属性方法中，用哪个就提取哪个。</p>
 
       </div>
       
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-25T15:47:56+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年12月25日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>表单验证</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>策略模式</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://chenchunyang.site/2018/10/30/02-Login-policy/&title=设计模式——登陆策略 | 一条放了盐的鱼&summary=场景引入在网页中，当我们在注册一个账号，也就是填写表单的时候，经常会看到一个效果：比如输入了用户名过后，再点击密码框想设置密码，这时网页会检测你的用户名是否合法，是否符合要求（如下图）。
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://chenchunyang.site/2018/10/30/02-Login-policy/&title=设计模式——登陆策略 | 一条放了盐的鱼&summary=场景引入在网页中，当我们在注册一个账号，也就是填写表单的时候，经常会看到一个效果：比如输入了用户名过后，再点击密码框想设置密码，这时网页会检测你的用户名是否合法，是否符合要求（如下图）。
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://chenchunyang.site/2018/10/30/02-Login-policy/&title=设计模式——登陆策略 | 一条放了盐的鱼&summary=场景引入在网页中，当我们在注册一个账号，也就是填写表单的时候，经常会看到一个效果：比如输入了用户名过后，再点击密码框想设置密码，这时网页会检测你的用户名是否合法，是否符合要求（如下图）。
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
       
       
           <div class="prev-next">
@@ -397,16 +495,16 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2019/06/26/%EF%BC%88%E8%BD%AC%EF%BC%8943%E9%81%93js%E8%BF%9B%E9%98%B6%E6%B5%8B%E8%AF%95%E9%A2%98/" rel="prev" title="（转）43道js进阶测试题">
+                              <a href="/2018/10/30/03-Delegation-mode/" rel="prev" title="设计模式——委托模式">
                                 
-                                    （转）43道js进阶测试题
+                                    设计模式——委托模式
                                 
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/js%E8%BF%9B%E9%98%B6/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> js进阶</a>
+                                  <a class="tag" href="/tags/%E5%A7%94%E6%89%98%E6%A8%A1%E5%BC%8F/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 委托模式</a>
                               </h6>
                           
                       </span>
@@ -417,16 +515,16 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2019/05/20/%E5%9F%BA%E4%BA%8Efetch%E5%B0%81%E8%A3%85%E7%9A%84%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E4%BB%A3%E7%A0%81/" rel="prev" title="基于fetch封装的下载文件代码">
+                              <a href="/2018/10/28/01-Into-the-pit/" rel="prev" title="入坑记">
                                   
-                                      基于fetch封装的下载文件代码
+                                      入坑记
                                   
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E5%B0%81%E8%A3%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 封装</a>
+                                  <a class="tag" href="/tags/%E5%85%A5%E5%9D%91/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 入坑</a>
                               </h6>
                           
                       </span>
@@ -467,6 +565,13 @@
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
+
+  <script>
+    window.subData = {
+      title: '设计模式——登陆策略',
+      tools: true
+    }
+  </script>
 
 
 </div>
@@ -575,6 +680,20 @@
           
             
               
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer noopener" href="javascript:void(0)" target="_blank"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#场景引入"><span class="toc-text">场景引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#思路分析"><span class="toc-text">思路分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现过程"><span class="toc-text">实现过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优化"><span class="toc-text">优化</span></a></li></ol>
+    </div>
+  </section>
+
 
             
           
@@ -687,8 +806,8 @@
       rel="nofollow"
     
     
-    href="/blog/categories/"
-    title="blog/categories/">
+    href="/categories/"
+    title="categories/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>

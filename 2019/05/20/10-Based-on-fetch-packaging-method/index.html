@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>入坑记 | 一条放了盐的鱼</title>
+  <title>基于fetch封装的下载文件代码 | 一条放了盐的鱼</title>
   
   
   <meta name="description" content="前端博客，笔记，解决方案">
@@ -219,23 +219,23 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/http:/chenchunyang.site/notes/dist/"
+							<a class="nav flat-box" href="/notes/dist/"
                 
                 
                   target="true"
                 
-                id="http:chenchunyang.sitenotesdist">
+                id="notesdist">
 								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/blog/archives/"
+							<a class="nav flat-box" href="/archives/"
                 
                   rel="nofollow"
                 
                 
-                id="blogarchives">
+                id="archives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
 							</a>
             </li>
@@ -298,8 +298,8 @@
         
   
     <h1 class="title">
-      <a href="/2018/10/28/%E5%85%A5%E5%9D%91%E8%AE%B0/">
-        入坑记
+      <a href="/2019/05/20/10-Based-on-fetch-packaging-method/">
+        基于fetch封装的下载文件代码
       </a>
     </h1>
   
@@ -330,7 +330,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-10-28</p>
+    <p>2019-05-20</p>
   </a>
 </div>
 
@@ -340,9 +340,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E9%9A%8F%E7%AC%94/' rel="nofollow">
+    <a href='/categories/fetch/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>随笔</p>
+      <p>fetch</p>
     </a>
   </div>
 
@@ -382,13 +382,10 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h4 id="伪前言"><a href="#伪前言" class="headerlink" title="伪前言"></a>伪前言</h4><p>前言听起来好像是书中才应该有的东西，但是因为这是这篇博客中的第一篇，想写个开头，实在是不知道应该用什么小标题了，于是起了个“伪前言”。我记得在大二下学期自学前端刚开始的时候，学会了一点简单的切图和布局，想做一个自己的博客，于是在腾讯云上买了一年的域名权限（花了我10多块大洋），还买了服务器（这个忘记怎么收费的了），跟着流程一直到了备案照相，腾讯发过来印有他们公司logo的幕布，但是后来又因为一些其他事情加上找实习，这件事就没再继续了，当时还以为能切个图，买个服务器弄个域名一上传就完了，结果怎么弄都没有成功。<a id="more"></a></p>
-<p>一晃过去一年多了，最近还是想有一个自己的记录笔记的地方，朋友说可以试试hexo在github上搭一个静态的，说干就干！后来搜索了很多文章，网上也有很多教程，自己就抱着试试看的态度一步一步地跟着教程走，当我刷出来它默认主题的hello world的页面时，我知道第一步已经成功完成了。</p>
-<hr>
-<h4 id="继续配置"><a href="#继续配置" class="headerlink" title="继续配置"></a>继续配置</h4><p>默认的主题配置实在是有点丑，于是又开始了愉快的百度搜索之旅，选择了一个据说是使用人数最多的一个主题next，既然使用的人多我想它的文档应该也挺全的，后面就开始具体进行配置了。</p>
-<p>配置主要是对两个文件进行改动，一个是主目录下的<strong>_config.yml</strong>，另一个是主题文件中的<strong>_config.yml</strong>。简单的修改过后，一个雏形已经出来了，后来又想加一个统计文章阅读次数的功能，利用的LeanCloud第三方工具，后面还想再开放一个评论的功能，这也需要一个第三方工具，静态网站的弊端就体现在这里了，因为自己没有实现后端，只能依赖于第三方服务商。目前点击个别导航栏会弹出404，还没有添加页面，后面会把他们都添加上，同样还有文章的分页与折叠也需要实现一下，不然不方便阅读。最主要的还是要再申请一个域名并改变它的“this指向“,不然看到域名总是有种寄人篱下的感觉= =。</p>
-<hr>
-<p>嗯，暂时就这样吧，后面我会陆陆续续记录前端方面的学习。</p>
+        <h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>公司的一个项目当中，之前的所有请求并不需要在请求头上都加上 token，不需要验证，但是最近后台逻辑改了，要都加上 token。大多数请求都还好，直接加上就可以了，但是下载文件之前是使用 a 标签来做的，a 标签又没有办法直接加 headers，那么只能考虑用另一种方法模拟，再加上项目中请求基本都是用的 fetch，于是自然是想着基于 fetch 封装一个下载文件的方法。</p>
+<a id="more"></a>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> fetch <span class="keyword">from</span> <span class="string">'dva/fetch'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; message &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查状态码的函数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkStatus</span>(<span class="params">res</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (res &amp;&amp; res.status === <span class="number">401</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        message.error(<span class="string">'下载出错，查看控制台'</span>, <span class="number">2</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (res.status &gt;= <span class="number">200</span> &amp;&amp; res.status &lt; <span class="number">300</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> res;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> error = <span class="keyword">new</span> <span class="built_in">Error</span>(res.statusText);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    error.res = res;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">throw</span> error;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * 下载文件的主函数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> *</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * @param &#123;string&#125; url       请求地址</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * @param &#123;string&#125; fileName  文件名</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> * @param &#123;string&#125; ext       扩展名</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> *</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="comment"> */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downloadFile</span>(<span class="params">url, fileName, ext</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">    fetch(url, &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        headers: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">            Authorization: localStorage.getItem(<span class="string">'token'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    &#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">        .then(checkStatus)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">        .then(<span class="function"><span class="params">res</span> =&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">            res.blob().then(<span class="function"><span class="params">blob</span> =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">let</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">let</span> url = <span class="built_in">window</span>.URL.createObjectURL(blob);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">let</span> filename = <span class="string">`<span class="subst">$&#123;fileName&#125;</span>.<span class="subst">$&#123;ext&#125;</span>`</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">                a.href = url;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">                a.download = filename;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">                a.click();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">                <span class="built_in">window</span>.URL.revokeObjectURL(url);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">            &#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">        );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">    downloadFile</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr></table></figure>
 
       </div>
       
@@ -401,10 +398,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-02T18:45:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-25T15:54:45+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2019年12月2日</p>
+    <p>更新于 2019年12月25日</p>
   </a>
 </div>
 
@@ -413,7 +410,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%85%A5%E5%9D%91/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>入坑</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B0%81%E8%A3%85/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>封装</p></a></div>
 
 
         
@@ -426,7 +423,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://chenchunyang.site/2018/10/28/%E5%85%A5%E5%9D%91%E8%AE%B0/&title=入坑记 | 一条放了盐的鱼&summary=伪前言前言听起来好像是书中才应该有的东西，但是因为这是这篇博客中的第一篇，想写个开头，实在是不知道应该用什么小标题了，于是起了个“伪前言”。我记得在大二下学期自学前端刚开始的时候，学会了一点简单的切图和布局，想做一个自己的博客，于是在腾讯云上买了一年的域名权限（花了我10多块大洋），还买了服务器（这个忘记怎么收费的了），跟着流程一直到了备案照相，腾讯发过来印有他们公司logo的幕布，但是后来又因为一些其他事情加上找实习，这件事就没再继续了，当时还以为能切个图，买个服务器弄个域名一上传就完了，结果怎么弄都没有成功。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://chenchunyang.site/2019/05/20/10-Based-on-fetch-packaging-method/&title=基于fetch封装的下载文件代码 | 一条放了盐的鱼&summary=背景公司的一个项目当中，之前的所有请求并不需要在请求头上都加上 token，不需要验证，但是最近后台逻辑改了，要都加上 token。大多数请求都还好，直接加上就可以了，但是下载文件之前是使用 a 标签来做的，a 标签又没有办法直接加 headers，那么只能考虑用另一种方法模拟，再加上项目中请求基本都是用的 fetch，于是自然是想着基于 fetch 封装一个下载文件的方法。"
           
           >
           
@@ -438,7 +435,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://chenchunyang.site/2018/10/28/%E5%85%A5%E5%9D%91%E8%AE%B0/&title=入坑记 | 一条放了盐的鱼&summary=伪前言前言听起来好像是书中才应该有的东西，但是因为这是这篇博客中的第一篇，想写个开头，实在是不知道应该用什么小标题了，于是起了个“伪前言”。我记得在大二下学期自学前端刚开始的时候，学会了一点简单的切图和布局，想做一个自己的博客，于是在腾讯云上买了一年的域名权限（花了我10多块大洋），还买了服务器（这个忘记怎么收费的了），跟着流程一直到了备案照相，腾讯发过来印有他们公司logo的幕布，但是后来又因为一些其他事情加上找实习，这件事就没再继续了，当时还以为能切个图，买个服务器弄个域名一上传就完了，结果怎么弄都没有成功。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://chenchunyang.site/2019/05/20/10-Based-on-fetch-packaging-method/&title=基于fetch封装的下载文件代码 | 一条放了盐的鱼&summary=背景公司的一个项目当中，之前的所有请求并不需要在请求头上都加上 token，不需要验证，但是最近后台逻辑改了，要都加上 token。大多数请求都还好，直接加上就可以了，但是下载文件之前是使用 a 标签来做的，a 标签又没有办法直接加 headers，那么只能考虑用另一种方法模拟，再加上项目中请求基本都是用的 fetch，于是自然是想着基于 fetch 封装一个下载文件的方法。"
           
           >
           
@@ -450,7 +447,7 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://chenchunyang.site/2018/10/28/%E5%85%A5%E5%9D%91%E8%AE%B0/&title=入坑记 | 一条放了盐的鱼&summary=伪前言前言听起来好像是书中才应该有的东西，但是因为这是这篇博客中的第一篇，想写个开头，实在是不知道应该用什么小标题了，于是起了个“伪前言”。我记得在大二下学期自学前端刚开始的时候，学会了一点简单的切图和布局，想做一个自己的博客，于是在腾讯云上买了一年的域名权限（花了我10多块大洋），还买了服务器（这个忘记怎么收费的了），跟着流程一直到了备案照相，腾讯发过来印有他们公司logo的幕布，但是后来又因为一些其他事情加上找实习，这件事就没再继续了，当时还以为能切个图，买个服务器弄个域名一上传就完了，结果怎么弄都没有成功。"
+          href="http://service.weibo.com/share/share.php?url=http://chenchunyang.site/2019/05/20/10-Based-on-fetch-packaging-method/&title=基于fetch封装的下载文件代码 | 一条放了盐的鱼&summary=背景公司的一个项目当中，之前的所有请求并不需要在请求头上都加上 token，不需要验证，但是最近后台逻辑改了，要都加上 token。大多数请求都还好，直接加上就可以了，但是下载文件之前是使用 a 标签来做的，a 标签又没有办法直接加 headers，那么只能考虑用另一种方法模拟，再加上项目中请求基本都是用的 fetch，于是自然是想着基于 fetch 封装一个下载文件的方法。"
           
           >
           
@@ -478,21 +475,40 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2018/10/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E7%99%BB%E9%99%86%E7%AD%96%E7%95%A5/" rel="prev" title="设计模式——登陆策略">
+                              <a href="/2019/06/21/11-About-the-use-of-transform/" rel="prev" title="开发中关于transfrom缩放的一次应用">
                                 
-                                    设计模式——登陆策略
+                                    开发中关于transfrom缩放的一次应用
                                 
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 表单验证</a> <a class="tag" href="/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 策略模式</a>
+                                  <a class="tag" href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 兼容性</a>
                               </h6>
                           
                       </span>
                   </section>
               
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2018/11/26/09-Engineering-of-gulp/" rel="prev" title="gulp工程化及一些常用插件的使用">
+                                  
+                                      gulp工程化及一些常用插件的使用
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 常用插件</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
               
           </div>
       
@@ -532,7 +548,7 @@
 
   <script>
     window.subData = {
-      title: '入坑记',
+      title: '基于fetch封装的下载文件代码',
       tools: true
     }
   </script>
@@ -654,7 +670,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#伪前言"><span class="toc-text">伪前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继续配置"><span class="toc-text">继续配置</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li></ol>
     </div>
   </section>
 
@@ -770,8 +786,8 @@
       rel="nofollow"
     
     
-    href="/blog/categories/"
-    title="blog/categories/">
+    href="/categories/"
+    title="categories/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>
