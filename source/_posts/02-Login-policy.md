@@ -9,16 +9,23 @@ tags:
 ---
 
 #### 场景引入
+
 在网页中，当我们在注册一个账号，也就是填写表单的时候，经常会看到一个效果：比如输入了用户名过后，再点击密码框想设置密码，这时网页会检测你的用户名是否合法，是否符合要求（如下图）。
 
 ![form.jpg](https://i.loli.net/2019/12/02/ZKM6XcD4xLGAhi1.jpg)
+
 <!-- more -->
 
-______________________________________________________
+---
+
 #### 思路分析
+
 针对这个效果，我们可以对用户名输入框设置一个失去焦点的事件，并且在失去焦点的时候对输入的内容进行正则匹配，不匹配则报错。
-______________________________________________________
+
+---
+
 #### 实现过程
+
 ```javascript
 	// 获取元素
 	var username = document.getElementById("username");
@@ -35,10 +42,15 @@ ______________________________________________________
 			console.log("请输入纯英文");
 		}
 ```
-这个思路还是很好想到的，但是突然有一天，我们又得到一个需求，要对100个表单都进行验证。虽然按照这个思路一个一个地写，一个一个地复制粘贴也没有问题，但是未免效率太低了，这时候就需要进行优化！
-______________________________________________________
+
+这个思路还是很好想到的，但是突然有一天，我们又得到一个需求，要对 100 个表单都进行验证。虽然按照这个思路一个一个地写，一个一个地复制粘贴也没有问题，但是未免效率太低了，这时候就需要进行优化！
+
+---
+
 #### 优化
-先说说jQery中的运用到的策略模式，如下代码：
+
+先说说 jQery 中的运用到的策略模式，如下代码：
+
 ```javascript
     <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
     <script type="text/javascript" src="js/jquery.easing.js"></script>
@@ -49,47 +61,52 @@ ______________________________________________________
     $("#box3").animate({left: 1000}, 1000, "easeInElastic", function() {});
     </script>
 ```
-它把一些运动的方式写到了easing.js中，当我们去给盒子定义动画的时候
-不用再去一个一个书写，想用哪种效果就直接在animate函数第三个参数写上“名字”。
+
+它把一些运动的方式写到了 easing.js 中，当我们去给盒子定义动画的时候
+不用再去一个一个书写，想用哪种效果就直接在 animate 函数第三个参数写上“名字”。
 按照这种想法，我们在进行表单验证时，也把特定的验证方式封装成一个对象里的方法。
+
 ```javascript
-	// 定义对象
-	var Strategy = (function() {
-		var s = {
-			"chunyingwen": function(str) {
-				// 定义正则表达式
-				var reg = /^[a-zA-Z]+$/g;
-				// 验证
-				if (reg.test(str)) {
-					return "通过";
-				} else {
-					return "请输入纯英文"
-				}
-			},
-			"chunshuzi": function(num) {
-				// 定义正则匹配
-				var reg = /^\d+$/g;
-				// 验证
-				if (reg.test(num)) {
-					return "通过";
-				} else {
-					return "请输入纯数字"
-				}
-			}
-		}
-		// 定义接口
-		return {
-			use: function(type, str) {
-				return s[type](str);
-			}
-		}
-    })();
+// 定义对象
+var Strategy = (function() {
+    var s = {
+        chunyingwen: function(str) {
+            // 定义正则表达式
+            var reg = /^[a-zA-Z]+$/g;
+            // 验证
+            if (reg.test(str)) {
+                return '通过';
+            } else {
+                return '请输入纯英文';
+            }
+        },
+        chunshuzi: function(num) {
+            // 定义正则匹配
+            var reg = /^\d+$/g;
+            // 验证
+            if (reg.test(num)) {
+                return '通过';
+            } else {
+                return '请输入纯数字';
+            }
+        }
+    };
+    // 定义接口
+    return {
+        use: function(type, str) {
+            return s[type](str);
+        }
+    };
+})();
 ```
+
 接下来再进行验证的时候就简单了，用哪种方法直接引入该对象下的方法。
+
 ```javascript
-	// 失去焦点之后检测内容的合法性
-	username.onblur = function() {
-		var result = Strategy.use("chunshuzi", this.value);	
-	}
+// 失去焦点之后检测内容的合法性
+username.onblur = function() {
+    var result = Strategy.use('chunshuzi', this.value);
+};
 ```
+
 所以整体来说策略模式就是把特定的方法都提取出来，封装在一个对象下的属性方法中，用哪个就提取哪个。

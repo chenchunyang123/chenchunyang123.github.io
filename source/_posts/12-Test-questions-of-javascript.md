@@ -8,11 +8,12 @@ tags:
 	- js进阶
 ---
 
-这两天在网上有一个比较火的github库，里面有43道js相关的测试题，可以测试一下你的基础是否扎实，我也从头到位仔细看了看，觉得很有用，于是转到了个人的博客中来，如果侵犯到了作者的利益，我会随时删除。
-附上该库的github地址：https://github.com/lydiahallie/javascript-questions
-<!-- more -->
-### JavaScript 进阶问题列表
+这两天在网上有一个比较火的 github 库，里面有 43 道 js 相关的测试题，可以测试一下你的基础是否扎实，我也从头到位仔细看了看，觉得很有用，于是转到了个人的博客中来，如果侵犯到了作者的利益，我会随时删除。
+附上该库的 github 地址：https://github.com/lydiahallie/javascript-questions
 
+<!-- more -->
+
+### JavaScript 进阶问题列表
 
 答案在问题下方的折叠部分，点击即可展开问题。
 
@@ -22,25 +23,26 @@ tags:
 
 ```javascript
 function sayHi() {
-  console.log(name)
-  console.log(age)
-  var name = 'Lydia'
-  let age = 21
+    console.log(name);
+    console.log(age);
+    var name = 'Lydia';
+    let age = 21;
 }
 
-sayHi()
+sayHi();
 ```
 
-- A: `Lydia` 和 `undefined`
-- B: `Lydia` 和 `ReferenceError`
-- C: `ReferenceError` 和 `21`
-- D: `undefined` 和 `ReferenceError`
+-   A: `Lydia` 和 `undefined`
+-   B: `Lydia` 和 `ReferenceError`
+-   C: `ReferenceError` 和 `21`
+-   D: `undefined` 和 `ReferenceError`
 
 <details><summary><b>答案</b></summary>
 答案: D
 在函数内部，我们首先通过 `var` 关键字声明了 `name` 变量。这意味着变量被提升了（内存空间在创建阶段就被设置好了），直到程序运行到定义变量位置之前默认值都是 `undefined`。因为当我们打印 `name` 变量时还没有执行到定义变量的位置，因此变量的值保持为 `undefined`。
 
 通过 `let` 和 `const` 关键字声明的变量也会提升，但是和 `var` 不同，它们不会被<i>初始化</i>。在我们声明（初始化）之前是不能访问它们的。这个行为被称之为暂时性死区。当我们试图在声明之前访问它们时，JavaScript 将会抛出一个 `ReferenceError` 错误。
+
 </details>
 
 ---
@@ -49,23 +51,24 @@ sayHi()
 
 ```javascript
 for (var i = 0; i < 3; i++) {
-  setTimeout(() => console.log(i), 1)
+    setTimeout(() => console.log(i), 1);
 }
 
 for (let i = 0; i < 3; i++) {
-  setTimeout(() => console.log(i), 1)
+    setTimeout(() => console.log(i), 1);
 }
 ```
 
-- A: `0 1 2` 和 `0 1 2`
-- B: `0 1 2` 和 `3 3 3`
-- C: `3 3 3` 和 `0 1 2`
+-   A: `0 1 2` 和 `0 1 2`
+-   B: `0 1 2` 和 `3 3 3`
+-   C: `3 3 3` 和 `0 1 2`
 
 <details><summary><b>答案</b></summary>
 答案: C
 由于 JavaScript 的事件循环，`setTimeout` 回调会在*遍历结束后*才执行。因为在第一个遍历中遍历 `i` 是通过 `var` 关键字声明的，所以这个值是全局作用域下的。在遍历过程中，我们通过一元操作符 `++` 来每次递增 `i` 的值。当 `setTimeout` 回调执行的时候，`i` 的值等于 3。
 
 在第二个遍历中，遍历 `i` 是通过 `let` 关键字声明的：通过 `let` 和 `const` 关键字声明的变量是拥有块级作用域（指的是任何在 {} 中的内容）。在每次的遍历过程中，`i` 都有一个新值，并且每个值都在循环内的作用域中。
+
 </details>
 
 ---
@@ -74,21 +77,21 @@ for (let i = 0; i < 3; i++) {
 
 ```javascript
 const shape = {
-  radius: 10,
-  diameter() {
-    return this.radius * 2
-  },
-  perimeter: () => 2 * Math.PI * this.radius
-}
+    radius: 10,
+    diameter() {
+        return this.radius * 2;
+    },
+    perimeter: () => 2 * Math.PI * this.radius
+};
 
-shape.diameter()
-shape.perimeter()
+shape.diameter();
+shape.perimeter();
 ```
 
-- A: `20` and `62.83185307179586`
-- B: `20` and `NaN`
-- C: `20` and `63`
-- D: `NaN` and `63`
+-   A: `20` and `62.83185307179586`
+-   B: `20` and `NaN`
+-   C: `20` and `63`
+-   D: `NaN` and `63`
 
 <details><summary><b>答案</b></summary>
 答案: B
@@ -97,6 +100,7 @@ shape.perimeter()
 对于箭头函数，`this` 关键字指向的是它当前周围作用域（简单来说是包含箭头函数的常规函数，如果没有常规函数的话就是全局对象），这个行为和常规函数不同。这意味着当我们调用 `perimeter` 时，`this` 不是指向 `shape` 对象，而是它的周围作用域（在例子中是 `window`）。
 
 在 `window` 中没有 `radius` 这个属性，因此返回 `undefined`。
+
 </details>
 
 ---
@@ -104,19 +108,20 @@ shape.perimeter()
 #### 4. 输出是什么？
 
 ```javascript
-;+true
-!'Lydia'
++true;
+!'Lydia';
 ```
 
-- A: `1` and `false`
-- B: `false` and `NaN`
-- C: `false` and `false`
+-   A: `1` and `false`
+-   B: `false` and `NaN`
+-   C: `false` and `false`
 
 <details><summary><b>答案</b></summary>
 答案: A
 一元操作符加号尝试将 bool 转为 number。`true` 转换为 number 的话为 `1`，`false` 为 `0`。
 
 字符串 `'Lydia'` 是一个真值，真值取反那么就返回 `false`。
+
 </details>
 
 ---
@@ -125,19 +130,19 @@ shape.perimeter()
 
 ```javascript
 const bird = {
-  size: 'small'
-}
+    size: 'small'
+};
 
 const mouse = {
-  name: 'Mickey',
-  small: true
-}
+    name: 'Mickey',
+    small: true
+};
 ```
 
-- A: `mouse.bird.size`
-- B: `mouse[bird.size]`
-- C: `mouse[bird["size"]]`
-- D: All of them are valid
+-   A: `mouse.bird.size`
+-   B: `mouse[bird.size]`
+-   C: `mouse[bird["size"]]`
+-   D: All of them are valid
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -148,26 +153,26 @@ const mouse = {
 `mouse[bird.size]`：首先计算 `bird.size`，这会得到 `small`。`mouse["small"]` 返回 `true`。
 
 然后使用点语法的话，上面这一切都不会发生。`mouse` 没有 `bird` 这个 key，这也就意味着 `mouse.bird` 是 `undefined`。然后当我们使用点语法 `mouse.bird.size` 时，因为 `mouse.bird` 是 `undefined`，这也就变成了 `undefined.size`。这个行为是无效的，并且会抛出一个错误类似 `Cannot read property "size" of undefined`。
+
 </details>
 
 ---
 
-
 #### 6. 输出是什么？
 
 ```javascript
-let c = { greeting: 'Hey!' }
-let d
+let c = { greeting: 'Hey!' };
+let d;
 
-d = c
-c.greeting = 'Hello'
-console.log(d.greeting)
+d = c;
+c.greeting = 'Hello';
+console.log(d.greeting);
 ```
 
-- A: `Hello`
-- B: `undefined`
-- C: `ReferenceError`
-- D: `TypeError`
+-   A: `Hello`
+-   B: `undefined`
+-   C: `ReferenceError`
+-   D: `TypeError`
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -178,6 +183,7 @@ console.log(d.greeting)
 <img src="https://i.imgur.com/ko5k0fs.png" width="200">
 
 因此当我们改变其中一个对象时，其实是改变了所有的对象。
+
 </details>
 
 ---
@@ -185,19 +191,19 @@ console.log(d.greeting)
 #### 7. 输出是什么？
 
 ```javascript
-let a = 3
-let b = new Number(3)
-let c = 3
+let a = 3;
+let b = new Number(3);
+let c = 3;
 
-console.log(a == b)
-console.log(a === b)
-console.log(b === c)
+console.log(a == b);
+console.log(a === b);
+console.log(b === c);
 ```
 
-- A: `true` `false` `true`
-- B: `false` `false` `true`
-- C: `true` `false` `false`
-- D: `false` `true` `true`
+-   A: `true` `false` `true`
+-   B: `false` `false` `true`
+-   C: `true` `false` `false`
+-   D: `false` `true` `true`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -206,6 +212,7 @@ console.log(b === c)
 当我们使用 `==` 操作符时，它只会检查两者是否拥有相同的*值*。因为它们的值都是 `3`，因此返回 `true`。
 
 然后，当我们使用 `===` 操作符时，两者的值以及*类型*都应该是相同的。`new Number()` 是一个对象而不是 number，因此返回 `false`。
+
 </details>
 
 ---
@@ -214,24 +221,24 @@ console.log(b === c)
 
 ```javascript
 class Chameleon {
-  static colorChange(newColor) {
-    this.newColor = newColor
-    return this.newColor
-  }
+    static colorChange(newColor) {
+        this.newColor = newColor;
+        return this.newColor;
+    }
 
-  constructor({ newColor = 'green' } = {}) {
-    this.newColor = newColor
-  }
+    constructor({ newColor = 'green' } = {}) {
+        this.newColor = newColor;
+    }
 }
 
-const freddie = new Chameleon({ newColor: 'purple' })
-freddie.colorChange('orange')
+const freddie = new Chameleon({ newColor: 'purple' });
+freddie.colorChange('orange');
 ```
 
-- A: `orange`
-- B: `purple`
-- C: `green`
-- D: `TypeError`
+-   A: `orange`
+-   B: `purple`
+-   C: `green`
+-   D: `TypeError`
 
 <details><summary><b>答案</b></summary>
 答案: D
@@ -243,20 +250,21 @@ freddie.colorChange('orange')
 #### 9. 输出是什么？
 
 ```javascript
-let greeting
-greetign = {} // Typo!
-console.log(greetign)
+let greeting;
+greetign = {}; // Typo!
+console.log(greetign);
 ```
 
-- A: `{}`
-- B: `ReferenceError: greetign is not defined`
-- C: `undefined`
+-   A: `{}`
+-   B: `ReferenceError: greetign is not defined`
+-   C: `undefined`
 
 <details><summary><b>答案</b></summary>
 答案: A
 代码打印出了一个对象，这是因为我们在全局对象上创建了一个空对象！当我们将 `greeting` 写错成 `greetign` 时，JS 解释器实际在上浏览器中将它视为 `global.greetign = {}` （或者 `window.greetign = {}`）。
 
 为了避免这个为题，我们可以使用 `"use strict"。这能确保当你声明变量时必须赋值。
+
 </details>
 
 ---
@@ -265,22 +273,23 @@ console.log(greetign)
 
 ```javascript
 function bark() {
-  console.log('Woof!')
+    console.log('Woof!');
 }
 
-bark.animal = 'dog'
+bark.animal = 'dog';
 ```
 
-- A: 正常运行!
-- B: `SyntaxError`. 你不能通过这种方式给函数增加属性。
-- C: `undefined`
-- D: `ReferenceError`
+-   A: 正常运行!
+-   B: `SyntaxError`. 你不能通过这种方式给函数增加属性。
+-   C: `undefined`
+-   D: `ReferenceError`
 
 <details><summary><b>答案</b></summary>
 答案: A
 这在 JavaScript 中是可以的，因为函数是对象！（除了基本类型之外其他都是对象）
 
 函数是一个特殊的对象。你写的这个代码其实不是一个实际的函数。函数是一个拥有属性的对象，并且属性也可被调用。
+
 </details>
 
 ---
@@ -289,34 +298,35 @@ bark.animal = 'dog'
 
 ```javascript
 function Person(firstName, lastName) {
-  this.firstName = firstName;
-  this.lastName = lastName;
+    this.firstName = firstName;
+    this.lastName = lastName;
 }
 
-const member = new Person("Lydia", "Hallie");
-Person.getFullName = function () {
-  return `${this.firstName} ${this.lastName}`;
-}
+const member = new Person('Lydia', 'Hallie');
+Person.getFullName = function() {
+    return `${this.firstName} ${this.lastName}`;
+};
 
 console.log(member.getFullName());
 ```
 
-- A: `TypeError`
-- B: `SyntaxError`
-- C: `Lydia Hallie`
-- D: `undefined` `undefined`
+-   A: `TypeError`
+-   B: `SyntaxError`
+-   C: `Lydia Hallie`
+-   D: `undefined` `undefined`
 
 <details><summary><b>答案</b></summary>
 答案: A
 你不能像常规对象那样，给构造函数添加属性。如果你想一次性给所有实例添加特性，你应该使用原型。因此本例中，使用如下方式：
 
 ```js
-Person.prototype.getFullName = function () {
-  return `${this.firstName} ${this.lastName}`;
-}
+Person.prototype.getFullName = function() {
+    return `${this.firstName} ${this.lastName}`;
+};
 ```
 
 这才会使 `member.getFullName()` 起作用。为什么这么做有益的？假设我们将这个方法添加到构造函数本身里。也许不是每个 `Person` 实例都需要这个方法。这将浪费大量内存空间，因为它们仍然具有该属性，这将占用每个实例的内存空间。相反，如果我们只将它添加到原型中，那么它只存在于内存中的一个位置，但是所有实例都可以访问它！
+
 </details>
 
 ---
@@ -325,37 +335,38 @@ Person.prototype.getFullName = function () {
 
 ```javascript
 function Person(firstName, lastName) {
-  this.firstName = firstName
-  this.lastName = lastName
+    this.firstName = firstName;
+    this.lastName = lastName;
 }
 
-const lydia = new Person('Lydia', 'Hallie')
-const sarah = Person('Sarah', 'Smith')
+const lydia = new Person('Lydia', 'Hallie');
+const sarah = Person('Sarah', 'Smith');
 
-console.log(lydia)
-console.log(sarah)
+console.log(lydia);
+console.log(sarah);
 ```
 
-- A: `Person {firstName: "Lydia", lastName: "Hallie"}` and `undefined`
-- B: `Person {firstName: "Lydia", lastName: "Hallie"}` and `Person {firstName: "Sarah", lastName: "Smith"}`
-- C: `Person {firstName: "Lydia", lastName: "Hallie"}` and `{}`
-- D:`Person {firstName: "Lydia", lastName: "Hallie"}` and `ReferenceError`
+-   A: `Person {firstName: "Lydia", lastName: "Hallie"}` and `undefined`
+-   B: `Person {firstName: "Lydia", lastName: "Hallie"}` and `Person {firstName: "Sarah", lastName: "Smith"}`
+-   C: `Person {firstName: "Lydia", lastName: "Hallie"}` and `{}`
+-   D:`Person {firstName: "Lydia", lastName: "Hallie"}` and `ReferenceError`
 
 <details><summary><b>答案</b></summary>
 答案: A
 对于 `sarah`，我们没有使用 `new` 关键字。当使用 `new` 时，`this` 引用我们创建的空对象。当未使用 `new` 时，`this` 引用的是**全局对象**（global object）。
 
 我们说 `this.firstName` 等于 `"Sarah"`，并且 `this.lastName` 等于 `"Smith"`。实际上我们做的是，定义了 `global.firstName = 'Sarah'` 和 `global.lastName = 'Smith'`。而 `sarah` 本身是 `undefined`。
+
 </details>
 
 ---
 
 #### 13. 事件传播的三个阶段是什么？
 
-- A: Target > Capturing > Bubbling
-- B: Bubbling > Target > Capturing
-- C: Target > Bubbling > Capturing
-- D: Capturing > Target > Bubbling
+-   A: Target > Capturing > Bubbling
+-   B: Bubbling > Target > Capturing
+-   C: Target > Bubbling > Capturing
+-   D: Capturing > Target > Bubbling
 
 <details><summary><b>答案</b></summary>
 答案: D
@@ -368,8 +379,8 @@ console.log(sarah)
 
 #### 14. 所有对象都有原型。
 
-- A: true
-- B: false
+-   A: true
+-   B: false
 
 <details><summary><b>答案</b></summary>
 答案: B
@@ -382,22 +393,23 @@ console.log(sarah)
 
 ```javascript
 function sum(a, b) {
-  return a + b
+    return a + b;
 }
 
-sum(1, '2')
+sum(1, '2');
 ```
 
-- A: `NaN`
-- B: `TypeError`
-- C: `"12"`
-- D: `3`
+-   A: `NaN`
+-   B: `TypeError`
+-   C: `"12"`
+-   D: `3`
 
 <details><summary><b>答案</b></summary>
 答案: C
 JavaScript 是一种**动态类型语言**：我们不指定某些变量的类型。值可以在你不知道的情况下自动转换成另一种类型，这种类型称为**隐式类型转换**（implicit type coercion）。**Coercion** 是指将一种类型转换为另一种类型。
 
 在本例中，JavaScript 将数字 `1` 转换为字符串，以便函数有意义并返回一个值。在数字类型（`1`）和字符串类型（`'2'`）相加时，该数字被视为字符串。我们可以连接字符串，比如 `"Hello" + "World"`，这里发生的是 `"1" + "2"`，它返回 `"12"`。
+
 </details>
 
 ---
@@ -405,16 +417,16 @@ JavaScript 是一种**动态类型语言**：我们不指定某些变量的类�
 #### 16. 输出是什么？
 
 ```javascript
-let number = 0
-console.log(number++)
-console.log(++number)
-console.log(number)
+let number = 0;
+console.log(number++);
+console.log(++number);
+console.log(number);
 ```
 
-- A: `1` `1` `2`
-- B: `1` `2` `2`
-- C: `0` `2` `2`
-- D: `0` `1` `2`
+-   A: `1` `1` `2`
+-   B: `1` `2` `2`
+-   C: `0` `2` `2`
+-   D: `0` `1` `2`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -429,6 +441,7 @@ console.log(number)
 2. 返回值（返回 `2`）
 
 结果是 `0 2 2`.
+
 </details>
 
 ---
@@ -437,20 +450,20 @@ console.log(number)
 
 ```javascript
 function getPersonInfo(one, two, three) {
-  console.log(one)
-  console.log(two)
-  console.log(three)
+    console.log(one);
+    console.log(two);
+    console.log(three);
 }
 
-const person = 'Lydia'
-const age = 21
+const person = 'Lydia';
+const age = 21;
 
-getPersonInfo`${person} is ${age} years old`
+getPersonInfo`${person} is ${age} years old`;
 ```
 
-- A: `"Lydia"` `21` `["", " is ", " years old"]`
-- B: `["", " is ", " years old"]` `"Lydia"` `21`
-- C: `"Lydia"` `["", " is ", " years old"]` `21`
+-   A: `"Lydia"` `21` `["", " is ", " years old"]`
+-   B: `["", " is ", " years old"]` `"Lydia"` `21`
+-   C: `"Lydia"` `["", " is ", " years old"]` `21`
 
 <details><summary><b>答案</b></summary>
 答案: B
@@ -463,21 +476,21 @@ getPersonInfo`${person} is ${age} years old`
 
 ```javascript
 function checkAge(data) {
-  if (data === { age: 18 }) {
-    console.log('You are an adult!')
-  } else if (data == { age: 18 }) {
-    console.log('You are still an adult.')
-  } else {
-    console.log(`Hmm.. You don't have an age I guess`)
-  }
+    if (data === { age: 18 }) {
+        console.log('You are an adult!');
+    } else if (data == { age: 18 }) {
+        console.log('You are still an adult.');
+    } else {
+        console.log(`Hmm.. You don't have an age I guess`);
+    }
 }
 
-checkAge({ age: 18 })
+checkAge({ age: 18 });
 ```
 
-- A: `You are an adult!`
-- B: `You are still an adult.`
-- C: `Hmm.. You don't have an age I guess`
+-   A: `You are an adult!`
+-   B: `You are still an adult.`
+-   C: `Hmm.. You don't have an age I guess`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -486,6 +499,7 @@ checkAge({ age: 18 })
 题目中我们正在比较的两个对象不是同一个引用：作为参数传递的对象引用的内存位置，与用于判断相等的对象所引用的内存位置并不同。
 
 这也是 `{ age: 18 } === { age: 18 }` 和 `{ age: 18 } == { age: 18 }` 都返回 `false` 的原因。
+
 </details>
 
 ---
@@ -494,16 +508,16 @@ checkAge({ age: 18 })
 
 ```javascript
 function getAge(...args) {
-  console.log(typeof args)
+    console.log(typeof args);
 }
 
-getAge(21)
+getAge(21);
 ```
 
-- A: `"number"`
-- B: `"array"`
-- C: `"object"`
-- D: `"NaN"`
+-   A: `"number"`
+-   B: `"array"`
+-   C: `"object"`
+-   D: `"NaN"`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -516,18 +530,18 @@ getAge(21)
 
 ```javascript
 function getAge() {
-  'use strict'
-  age = 21
-  console.log(age)
+    'use strict';
+    age = 21;
+    console.log(age);
 }
 
-getAge()
+getAge();
 ```
 
-- A: `21`
-- B: `undefined`
-- C: `ReferenceError`
-- D: `TypeError`
+-   A: `21`
+-   B: `undefined`
+-   C: `ReferenceError`
+-   D: `TypeError`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -539,13 +553,13 @@ getAge()
 #### 21. 输出是什么？
 
 ```javascript
-const sum = eval('10*10+5')
+const sum = eval('10*10+5');
 ```
 
-- A: `105`
-- B: `"105"`
-- C: `TypeError`
-- D: `"10*10+5"`
+-   A: `105`
+-   B: `"105"`
+-   C: `TypeError`
+-   D: `"10*10+5"`
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -557,19 +571,20 @@ const sum = eval('10*10+5')
 #### 22. cool_secret 可访问多长时间？
 
 ```javascript
-sessionStorage.setItem('cool_secret', 123)
+sessionStorage.setItem('cool_secret', 123);
 ```
 
-- A: 永远，数据不会丢失。
-- B: 当用户关掉标签页时。
-- C: 当用户关掉整个浏览器，而不只是关掉标签页。
-- D: 当用户关闭电脑时。
+-   A: 永远，数据不会丢失。
+-   B: 当用户关掉标签页时。
+-   C: 当用户关掉整个浏览器，而不只是关掉标签页。
+-   D: 当用户关闭电脑时。
 
 <details><summary><b>答案</b></summary>
 答案: B
 关闭 **tab 标签页** 后，`sessionStorage` 存储的数据才会删除。
 
 如果使用 `localStorage`，那么数据将永远在那里，除非调用了 `localStorage.clear()`。
+
 </details>
 
 ---
@@ -577,22 +592,23 @@ sessionStorage.setItem('cool_secret', 123)
 #### 23. 输出是什么？
 
 ```javascript
-var num = 8
-var num = 10
+var num = 8;
+var num = 10;
 
-console.log(num)
+console.log(num);
 ```
 
-- A: `8`
-- B: `10`
-- C: `SyntaxError`
-- D: `ReferenceError`
+-   A: `8`
+-   B: `10`
+-   C: `SyntaxError`
+-   D: `ReferenceError`
 
 <details><summary><b>答案</b></summary>
 答案: B
 使用 `var` 关键字，你可以用相同的名称声明多个变量。然后变量将保存最新的值。
 
 你不能使用 `let` 或 `const` 来实现这一点，因为它们是块作用域的。
+
 </details>
 
 ---
@@ -600,25 +616,26 @@ console.log(num)
 #### 24. 输出是什么？
 
 ```javascript
-const obj = { 1: 'a', 2: 'b', 3: 'c' }
-const set = new Set([1, 2, 3, 4, 5])
+const obj = { 1: 'a', 2: 'b', 3: 'c' };
+const set = new Set([1, 2, 3, 4, 5]);
 
-obj.hasOwnProperty('1')
-obj.hasOwnProperty(1)
-set.has('1')
-set.has(1)
+obj.hasOwnProperty('1');
+obj.hasOwnProperty(1);
+set.has('1');
+set.has(1);
 ```
 
-- A: `false` `true` `false` `true`
-- B: `false` `true` `true` `true`
-- C: `true` `true` `false` `true`
-- D: `true` `true` `true` `true`
+-   A: `false` `true` `false` `true`
+-   B: `false` `true` `true` `true`
+-   C: `true` `true` `false` `true`
+-   D: `true` `true` `true` `true`
 
 <details><summary><b>答案</b></summary>
 答案: C
 所有对象的键（不包括 Symbol）在底层都是字符串，即使你自己没有将其作为字符串输入。这就是为什么 `obj.hasOwnProperty('1')` 也返回 `true`。
 
 对于集合，它不是这样工作的。在我们的集合中没有 `'1'`：`set.has('1')` 返回 `false`。它有数字类型为 `1`，`set.has(1)` 返回 `true`。
+
 </details>
 
 ---
@@ -626,14 +643,14 @@ set.has(1)
 #### 25. 输出是什么？
 
 ```javascript
-const obj = { a: 'one', b: 'two', a: 'three' }
-console.log(obj)
+const obj = { a: 'one', b: 'two', a: 'three' };
+console.log(obj);
 ```
 
-- A: `{ a: "one", b: "two" }`
-- B: `{ b: "two", a: "three" }`
-- C: `{ a: "three", b: "two" }`
-- D: `SyntaxError`
+-   A: `{ a: "one", b: "two" }`
+-   B: `{ b: "two", a: "three" }`
+-   C: `{ a: "three", b: "two" }`
+-   D: `SyntaxError`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -644,9 +661,9 @@ console.log(obj)
 
 #### 26. JavaScript 全局执行上下文为你做了两件事：全局对象和 this 关键字。
 
-- A: true
-- B: false
-- C: it depends
+-   A: true
+-   B: false
+-   C: it depends
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -659,15 +676,15 @@ console.log(obj)
 
 ```javascript
 for (let i = 1; i < 5; i++) {
-  if (i === 3) continue
-  console.log(i)
+    if (i === 3) continue;
+    console.log(i);
 }
 ```
 
-- A: `1` `2`
-- B: `1` `2` `3`
-- C: `1` `2` `4`
-- D: `1` `3` `4`
+-   A: `1` `2`
+-   B: `1` `2` `3`
+-   C: `1` `2` `4`
+-   D: `1` `3` `4`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -680,18 +697,18 @@ for (let i = 1; i < 5; i++) {
 
 ```javascript
 String.prototype.giveLydiaPizza = () => {
-  return 'Just give Lydia pizza already!'
-}
+    return 'Just give Lydia pizza already!';
+};
 
-const name = 'Lydia'
+const name = 'Lydia';
 
-name.giveLydiaPizza()
+name.giveLydiaPizza();
 ```
 
-- A: `"Just give Lydia pizza already!"`
-- B: `TypeError: not a function`
-- C: `SyntaxError`
-- D: `undefined`
+-   A: `"Just give Lydia pizza already!"`
+-   B: `TypeError: not a function`
+-   C: `SyntaxError`
+-   D: `undefined`
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -703,20 +720,20 @@ name.giveLydiaPizza()
 #### 29. 输出是什么？
 
 ```javascript
-const a = {}
-const b = { key: 'b' }
-const c = { key: 'c' }
+const a = {};
+const b = { key: 'b' };
+const c = { key: 'c' };
 
-a[b] = 123
-a[c] = 456
+a[b] = 123;
+a[c] = 456;
 
-console.log(a[b])
+console.log(a[b]);
 ```
 
-- A: `123`
-- B: `456`
-- C: `undefined`
-- D: `ReferenceError`
+-   A: `123`
+-   B: `456`
+-   C: `undefined`
+-   D: `ReferenceError`
 
 <details><summary><b>答案</b></summary>
 答案: B
@@ -725,6 +742,7 @@ console.log(a[b])
 然而，当字符串化一个对象时，它会变成 `"[object Object]"`。因此这里说的是，`a["[object Object]"] = 123`。然后，我们再一次做了同样的事情，`c` 是另外一个对象，这里也有隐式字符串化，于是，`a["[object Object]"] = 456`。
 
 然后，我们打印 `a[b]`，也就是 `a["[object Object]"]`。之前刚设置为 `456`，因此返回的是 `456`。
+
 </details>
 
 ---
@@ -732,19 +750,19 @@ console.log(a[b])
 #### 30. 输出是什么？
 
 ```javascript
-const foo = () => console.log('First')
-const bar = () => setTimeout(() => console.log('Second'))
-const baz = () => console.log('Third')
+const foo = () => console.log('First');
+const bar = () => setTimeout(() => console.log('Second'));
+const baz = () => console.log('Third');
 
-bar()
-foo()
-baz()
+bar();
+foo();
+baz();
 ```
 
-- A: `First` `Second` `Third`
-- B: `First` `Third` `Second`
-- C: `Second` `First` `Third`
-- D: `Second` `Third` `First`
+-   A: `First` `Second` `Third`
+-   B: `First` `Third` `Second`
+-   C: `Second` `First` `Third`
+-   D: `Second` `Third` `First`
 
 <details><summary><b>答案</b></summary>
 答案: B
@@ -773,26 +791,27 @@ WebAPI 不能随时向栈内添加内容。相反，它将回调函数推到名�
 <img src="https://i.imgur.com/uyiScAI.png" width="200">
 
 `bar` 被调用，打印 `"Second"`，然后它被栈弹出。
+
 </details>
 
 ---
 
-#### 31. 当点击按钮时，event.target是什么？
+#### 31. 当点击按钮时，event.target 是什么？
 
 ```html
 <div onclick="console.log('first div')">
-  <div onclick="console.log('second div')">
-    <button onclick="console.log('button')">
-      Click!
-    </button>
-  </div>
+    <div onclick="console.log('second div')">
+        <button onclick="console.log('button')">
+            Click!
+        </button>
+    </div>
 </div>
 ```
 
-- A: Outer `div`
-- B: Inner `div`
-- C: `button`
-- D: 一个包含所有嵌套元素的数组。
+-   A: Outer `div`
+-   B: Inner `div`
+-   C: `button`
+-   D: 一个包含所有嵌套元素的数组。
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -805,16 +824,16 @@ WebAPI 不能随时向栈内添加内容。相反，它将回调函数推到名�
 
 ```html
 <div onclick="console.log('div')">
-  <p onclick="console.log('p')">
-    Click here!
-  </p>
+    <p onclick="console.log('p')">
+        Click here!
+    </p>
 </div>
 ```
 
-- A: `p` `div`
-- B: `div` `p`
-- C: `p`
-- D: `div`
+-   A: `p` `div`
+-   B: `div` `p`
+-   C: `p`
+-   D: `div`
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -826,26 +845,27 @@ WebAPI 不能随时向栈内添加内容。相反，它将回调函数推到名�
 #### 33. 输出是什么？
 
 ```javascript
-const person = { name: 'Lydia' }
+const person = { name: 'Lydia' };
 
 function sayHi(age) {
-  console.log(`${this.name} is ${age}`)
+    console.log(`${this.name} is ${age}`);
 }
 
-sayHi.call(person, 21)
-sayHi.bind(person, 21)
+sayHi.call(person, 21);
+sayHi.bind(person, 21);
 ```
 
-- A: `undefined is 21` `Lydia is 21`
-- B: `function` `function`
-- C: `Lydia is 21` `Lydia is 21`
-- D: `Lydia is 21` `function`
+-   A: `undefined is 21` `Lydia is 21`
+-   B: `function` `function`
+-   C: `Lydia is 21` `Lydia is 21`
+-   D: `Lydia is 21` `function`
 
 <details><summary><b>答案</b></summary>
 答案: D
 使用这两种方法，我们都可以传递我们希望 `this` 关键字引用的对象。但是，`.call` 是**立即执行**的。
 
 `.bind` 返回函数的**副本**，但带有绑定上下文！它不是立即执行的。
+
 </details>
 
 ---
@@ -854,22 +874,23 @@ sayHi.bind(person, 21)
 
 ```javascript
 function sayHi() {
-  return (() => 0)()
+    return (() => 0)();
 }
 
-typeof sayHi()
+typeof sayHi();
 ```
 
-- A: `"object"`
-- B: `"number"`
-- C: `"function"`
-- D: `"undefined"`
+-   A: `"object"`
+-   B: `"number"`
+-   C: `"function"`
+-   D: `"undefined"`
 
 <details><summary><b>答案</b></summary>
 答案: B
 `sayHi` 方法返回的是立即执行函数(IIFE)的返回值.此立即执行函数的返回值是 `0`， 类型是 `number`
 
-参考：只有7种内置类型：`null`，`undefined`，`boolean`，`number`，`string`，`object` 和 `symbol`。 ``function`` 不是一种类型，函数是对象，它的类型是``object``。
+参考：只有 7 种内置类型：`null`，`undefined`，`boolean`，`number`，`string`，`object` 和 `symbol`。 `function` 不是一种类型，函数是对象，它的类型是`object`。
+
 </details>
 
 ---
@@ -877,31 +898,32 @@ typeof sayHi()
 #### 35. 下面哪些值是 falsy?
 
 ```javascript
-0
-new Number(0)
-;('')
-;(' ')
-new Boolean(false)
-undefined
+0;
+new Number(0);
+('');
+(' ');
+new Boolean(false);
+undefined;
 ```
 
-- A: `0`, `''`, `undefined`
-- B: `0`, `new Number(0)`, `''`, `new Boolean(false)`, `undefined`
-- C: `0`, `''`, `new Boolean(false)`, `undefined`
-- D: All of them are falsy
+-   A: `0`, `''`, `undefined`
+-   B: `0`, `new Number(0)`, `''`, `new Boolean(false)`, `undefined`
+-   C: `0`, `''`, `new Boolean(false)`, `undefined`
+-   D: All of them are falsy
 
 <details><summary><b>答案</b></summary>
 答案: A
 只有 6 种 [falsy](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy) 值:
 
-- `undefined`
-- `null`
-- `NaN`
-- `0`
-- `''` (empty string)
-- `false`
+-   `undefined`
+-   `null`
+-   `NaN`
+-   `0`
+-   `''` (empty string)
+-   `false`
 
 `Function` 构造函数, 比如 `new Number` 和 `new Boolean`，是 [truthy](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy)。
+
 </details>
 
 ---
@@ -909,13 +931,13 @@ undefined
 #### 36. 输出是什么？
 
 ```javascript
-console.log(typeof typeof 1)
+console.log(typeof typeof 1);
 ```
 
-- A: `"number"`
-- B: `"string"`
-- C: `"object"`
-- D: `"undefined"`
+-   A: `"number"`
+-   B: `"string"`
+-   C: `"object"`
+-   D: `"undefined"`
 
 <details><summary><b>答案</b></summary>
 答案: B
@@ -928,15 +950,15 @@ console.log(typeof typeof 1)
 #### 37. 输出是什么？
 
 ```javascript
-const numbers = [1, 2, 3]
-numbers[10] = 11
-console.log(numbers)
+const numbers = [1, 2, 3];
+numbers[10] = 11;
+console.log(numbers);
 ```
 
-- A: `[1, 2, 3, 7 x null, 11]`
-- B: `[1, 2, 3, 11]`
-- C: `[1, 2, 3, 7 x empty, 11]`
-- D: `SyntaxError`
+-   A: `[1, 2, 3, 7 x null, 11]`
+-   B: `[1, 2, 3, 11]`
+-   C: `[1, 2, 3, 7 x empty, 11]`
+-   D: `SyntaxError`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -945,6 +967,7 @@ console.log(numbers)
 `[1, 2, 3, 7 x empty, 11]`
 
 这取决于你的运行环境（每个浏览器，以及 node 环境，都有可能不同）
+
 </details>
 
 ---
@@ -952,23 +975,23 @@ console.log(numbers)
 #### 38. 输出是什么？
 
 ```javascript
-;(() => {
-  let x, y
-  try {
-    throw new Error()
-  } catch (x) {
-    ;(x = 1), (y = 2)
-    console.log(x)
-  }
-  console.log(x)
-  console.log(y)
-})()
+(() => {
+    let x, y;
+    try {
+        throw new Error();
+    } catch (x) {
+        (x = 1), (y = 2);
+        console.log(x);
+    }
+    console.log(x);
+    console.log(y);
+})();
 ```
 
-- A: `1` `undefined` `2`
-- B: `undefined` `undefined` `undefined`
-- C: `1` `1` `2`
-- D: `1` `undefined` `undefined`
+-   A: `1` `undefined` `2`
+-   B: `undefined` `undefined` `undefined`
+-   C: `1` `1` `2`
+-   D: `1` `undefined` `undefined`
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -977,22 +1000,24 @@ console.log(numbers)
 然后，我们将块级作用域中的变量赋值为 `1`，同时也设置了变量 `y` 的值。现在，我们打印块级作用域中的变量 `x`，值为 `1`。
 
 `catch` 块之外的变量 `x` 的值仍为 `undefined`， `y` 的值为 `2`。当我们在 `catch` 块之外执行 `console.log(x)` 时，返回 `undefined`，`y` 返回 `2`。
+
 </details>
 
 ---
 
 #### 39. JavaScript 中的一切都是？
 
-- A: 基本类型与对象
-- B: 函数与对象
-- C: 只有对象
-- D: 数字与对象
+-   A: 基本类型与对象
+-   B: 函数与对象
+-   C: 只有对象
+-   D: 数字与对象
 
 <details><summary><b>答案</b></summary>
 答案: A
 JavaScript 只有基本类型和对象。
 
 基本类型包括 `boolean`, `null`, `undefined`, `bigint`, `number`, `string`, `symbol`。
+
 </details>
 
 ---
@@ -1000,18 +1025,21 @@ JavaScript 只有基本类型和对象。
 #### 40. 输出是什么？
 
 ```javascript
-;[[0, 1], [2, 3]].reduce(
-  (acc, cur) => {
-    return acc.concat(cur)
-  },
-  [1, 2]
-)
+[
+    [0, 1],
+    [2, 3]
+].reduce(
+    (acc, cur) => {
+        return acc.concat(cur);
+    },
+    [1, 2]
+);
 ```
 
-- A: `[0, 1, 2, 3, 1, 2]`
-- B: `[6, 1, 2]`
-- C: `[1, 2, 0, 1, 2, 3]`
-- D: `[1, 2, 6]`
+-   A: `[0, 1, 2, 3, 1, 2]`
+-   B: `[6, 1, 2]`
+-   C: `[1, 2, 0, 1, 2, 3]`
+-   D: `[1, 2, 6]`
 
 <details><summary><b>答案</b></summary>
 答案: C
@@ -1024,23 +1052,24 @@ JavaScript 只有基本类型和对象。
 #### 41. 输出是什么？
 
 ```javascript
-!!null
-!!''
-!!1
+!!null;
+!!'';
+!!1;
 ```
 
-- A: `false` `true` `false`
-- B: `false` `false` `true`
-- C: `false` `true` `true`
-- D: `true` `true` `false`
+-   A: `false` `true` `false`
+-   B: `false` `false` `true`
+-   C: `false` `true` `true`
+-   D: `true` `true` `false`
 
 <details><summary><b>答案</b></summary>
 答案: B
 `null` 是 [falsy](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy)。 `!null` 的值是 `true`。 `!true` 的值是 `false`。
 
-`""` 是 [falsy](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy)。 `!""` 的值是 `true`。  `!true` 的值是 `false`。
+`""` 是 [falsy](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy)。 `!""` 的值是 `true`。 `!true` 的值是 `false`。
 
 `1` 是 [truthy](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy)。 `!1` 的值是 `false`。 `!false` 的值是 `true`。
+
 </details>
 
 ---
@@ -1048,13 +1077,13 @@ JavaScript 只有基本类型和对象。
 #### 42. `setInterval` 方法的返回值是什么？
 
 ```javascript
-setInterval(() => console.log('Hi'), 1000)
+setInterval(() => console.log('Hi'), 1000);
 ```
 
-- A: 一个唯一的id
-- B: 该方法指定的毫秒数
-- C: 传递的函数
-- D: `undefined`
+-   A: 一个唯一的 id
+-   B: 该方法指定的毫秒数
+-   C: 传递的函数
+-   D: `undefined`
 
 <details><summary><b>答案</b></summary>
 答案: A
@@ -1066,13 +1095,13 @@ setInterval(() => console.log('Hi'), 1000)
 #### 43. 输出是什么？
 
 ```javascript
-[...'Lydia']
+[...'Lydia'];
 ```
 
-- A: `["L", "y", "d", "i", "a"]`
-- B: `["Lydia"]`
-- C: `[[], "Lydia"]`
-- D: `[["L", "y", "d", "i", "a"]]`
+-   A: `["L", "y", "d", "i", "a"]`
+-   B: `["Lydia"]`
+-   C: `[[], "Lydia"]`
+-   D: `[["L", "y", "d", "i", "a"]]`
 
 <details><summary><b>答案</b></summary>
 答案: A

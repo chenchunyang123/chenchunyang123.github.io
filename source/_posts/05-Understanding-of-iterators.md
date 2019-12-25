@@ -6,64 +6,82 @@ categories:
 tags:
 	- 迭代器方法
 ---
-##### Jq中的迭代器
 
-###### dom结构
+##### Jq 中的迭代器
+
+###### dom 结构
 
 ![jq1.jpg](https://i.loli.net/2019/12/02/YlosBPycev8Z5MJ.jpg)
+
 <!-- more -->
 
-###### js方法
+###### js 方法
+
 ![jq2.jpg](https://i.loli.net/2019/12/02/hMGcsWezUQr7SxJ.jpg)
+
 ###### 输出
+
 ![jq3.jpg](https://i.loli.net/2019/12/02/9Nm1khVTLdtwncA.jpg)（省略后面重复部分）
+
 ###### 定义一个数组及遍历
+
 ![jq4.jpg](https://i.loli.net/2019/12/02/uBkgNWGepob2Qa4.jpg)
-输出：（this的实质就是每一次遍历到的value的数字包装类型）
+输出：（this 的实质就是每一次遍历到的 value 的数字包装类型）
 ![jq5.jpg](https://i.loli.net/2019/12/02/oYEeqQKiX7CuS5r.jpg)
 
-______________________________________________________
-##### underscore中的迭代器
+---
+
+##### underscore 中的迭代器
+
 ###### 定义一个数组及遍历
 
 ![jq6.jpg](https://i.loli.net/2019/12/02/5BrsMNnmkD1gISi.jpg)
 输出：
 ![jq7.jpg](https://i.loli.net/2019/12/02/1IdmP5ChsLJYFof.jpg)
 
-______________________________________________________
-##### es5中的迭代器
+---
+
+##### es5 中的迭代器
+
 ###### 定义一个数组及遍历
+
 ![jq8.jpg](https://i.loli.net/2019/12/02/CwGAkXojhZqdacP.jpg)
 输出：
 ![jq9.jpg](https://i.loli.net/2019/12/02/WAEzJIsuRhramyX.jpg)
 
-______________________________________________________
+---
+
 ##### 自己的迭代器
+
 ###### 目的
+
 定义一个函数，该函数可以实现对数组和对象的遍历。
+
 ```javascript
-	/**
-	 * each函数 实现迭代器
-	 * @target 要遍历的目标
-	 * @fn     要执行的函数
-	 **/
-	function each(target, fn) {
-		// 判断传递的target是数组还是对象
-		if (target instanceof Array) {
-			// 说明传递的是数组
-			for (var i = 0; i < target.length; i++) {
-				// 执行fn
-				fn.call(target[i], target[i], i, target);
-			}
-		} else if (Object.prototype.toString.call(target) === "[object Object]") {
-			for (var i in target) {
-				// 传递二个参数
-				fn.call(target[i], target[i], i);
-			}
-		}
-	}
+/**
+ * each函数 实现迭代器
+ * @target 要遍历的目标
+ * @fn     要执行的函数
+ **/
+function each(target, fn) {
+    // 判断传递的target是数组还是对象
+    if (target instanceof Array) {
+        // 说明传递的是数组
+        for (var i = 0; i < target.length; i++) {
+            // 执行fn
+            fn.call(target[i], target[i], i, target);
+        }
+    } else if (Object.prototype.toString.call(target) === '[object Object]') {
+        for (var i in target) {
+            // 传递二个参数
+            fn.call(target[i], target[i], i);
+        }
+    }
+}
 ```
+
 ###### 数组遍历结果
+
 ![jq10.jpg](https://i.loli.net/2019/12/02/HhceLd8EI74GTnN.jpg)
 ![jq11.jpg](https://i.loli.net/2019/12/02/gyPu7avIGVr1C3o.jpg)
 

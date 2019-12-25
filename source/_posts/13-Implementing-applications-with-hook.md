@@ -6,11 +6,14 @@ categories:
 tags:
 	- hook语法
 ---
+
 ### 背景
 
-最近不是特别忙，所以想学一点新的东西充实一下自己，毕竟程序员这个职业就是要不断学习。又打算学学hook是因为vue3.0计划废除class相关api而使用hook，并且react中hook正式推出也有一段时间了，就让我对这个hook语法很好奇，它到底是何方神圣。
-这篇文章本来是打算记录一些hook的使用规则，用法，概念性的东西，但是在react的[**官方文档**](https://react.docschina.org/docs/hooks-intro.html)上，对hook语法的描述已经很清楚了！在这里就不再赘述，主要想记录一下自己用hook实现todolist的思路。
+最近不是特别忙，所以想学一点新的东西充实一下自己，毕竟程序员这个职业就是要不断学习。又打算学学 hook 是因为 vue3.0 计划废除 class 相关 api 而使用 hook，并且 react 中 hook 正式推出也有一段时间了，就让我对这个 hook 语法很好奇，它到底是何方神圣。
+这篇文章本来是打算记录一些 hook 的使用规则，用法，概念性的东西，但是在 react 的[**官方文档**](https://react.docschina.org/docs/hooks-intro.html)上，对 hook 语法的描述已经很清楚了！在这里就不再赘述，主要想记录一下自己用 hook 实现 todolist 的思路。
+
 <!-- more -->
+
 ### 实现思路
 
 #### 项目结构
@@ -43,6 +46,7 @@ tags:
                 |-- index.css
                 |-- index.js
 ```
+
 #### 代码详情
 
 ##### App.js
@@ -92,7 +96,7 @@ function App() {
 export default App;
 ```
 
-该文件是整个app的容器文件，从上到下依次引入了3个组件（InputBox、List、FilterOptions），然后利用hook的api定义了3种state数据，再根据不同组件与state数据之间的联系，把state传到相应的组件中去。
+该文件是整个 app 的容器文件，从上到下依次引入了 3 个组件（InputBox、List、FilterOptions），然后利用 hook 的 api 定义了 3 种 state 数据，再根据不同组件与 state 数据之间的联系，把 state 传到相应的组件中去。
 
 ##### InputBox.js
 
@@ -127,7 +131,8 @@ function InputBox(props) {
 
 export default InputBox;
 ```
-输入框中内容的改变需要一个输入文本数据，点击添加按钮是把文本数据添加到list展示数据的state里面去，所以需要list的state数据。再加上他们2个对应的改变值的方法，所以这个组件需要接收4个数据。
+
+输入框中内容的改变需要一个输入文本数据，点击添加按钮是把文本数据添加到 list 展示数据的 state 里面去，所以需要 list 的 state 数据。再加上他们 2 个对应的改变值的方法，所以这个组件需要接收 4 个数据。
 
 ##### FilterOptions.js
 
@@ -144,9 +149,9 @@ function FilterOptions(props) {
             {
                 renderArr.map((item, idx) => {
                     return (
-                        <button 
-                            key={idx} 
-                            style={{backgroundColor: renderValue === idx + 1 ? 'orange' : null}} 
+                        <button
+                            key={idx}
+                            style={{backgroundColor: renderValue === idx + 1 ? 'orange' : null}}
                             onClick={() => setRenderValue(idx + 1)}
                         >{item}</button>
                     )
@@ -158,7 +163,8 @@ function FilterOptions(props) {
 
 export default FilterOptions;
 ```
-该组件的实现思路是改变state中的一个‘信号量’，当该信号量为1时，list组件里面渲染全部事件，当为2时渲染已完成，当为3时渲染未完成。
+
+该组件的实现思路是改变 state 中的一个‘信号量’，当该信号量为 1 时，list 组件里面渲染全部事件，当为 2 时渲染已完成，当为 3 时渲染未完成。
 
 ##### List.js
 
@@ -230,8 +236,9 @@ function List(props) {
 
 export default List;
 ```
-list里面涉及到对事件的删除，事件已完成与未完成之间的状态切换，以及根据信号量渲染事件，所以接收了3个变量（信号量state， 事件state和改变事件的方法）
-有一点需要注意：在state为对象的时候，直接去改变对象里面的某个数据再返回当前对象并不会触发更新，会造成数据丢失，一定要返回一个新的对象，才能被react检测到。
+
+list 里面涉及到对事件的删除，事件已完成与未完成之间的状态切换，以及根据信号量渲染事件，所以接收了 3 个变量（信号量 state， 事件 state 和改变事件的方法）
+有一点需要注意：在 state 为对象的时候，直接去改变对象里面的某个数据再返回当前对象并不会触发更新，会造成数据丢失，一定要返回一个新的对象，才能被 react 检测到。
 
 ##### .eslintrc
 
@@ -246,8 +253,10 @@ list里面涉及到对事件的删除，事件已完成与未完成之间的状�
   }
 }
 ```
-这个是检测react hook语法的插件，官方推荐在代码中加上此插件。
+
+这个是检测 react hook 语法的插件，官方推荐在代码中加上此插件。
 
 #### 最后
-该demo只是用来体会hook语法之间数据定义，数据传递的过程，在样式及某些功能上存在着一些缺陷，这里就不再大幅度修改。
-该项目的github线上地址：http://chenchunyang.site/hook-todolist/build/
+
+该 demo 只是用来体会 hook 语法之间数据定义，数据传递的过程，在样式及某些功能上存在着一些缺陷，这里就不再大幅度修改。
+该项目的 github 线上地址：http://chenchunyang.site/hook-todolist/build/
