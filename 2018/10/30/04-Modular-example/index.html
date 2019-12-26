@@ -6,6 +6,8 @@
   
   <title>观察者模式结合seajs模块化的小实例 | 一条放了盐的鱼</title>
   
+  <meta name="keywords" content="信息教育，静态博客，coding、github博客，前端学习博客网站">
+  
   
   <meta name="description" content="前端博客，笔记，解决方案">
   
@@ -329,7 +331,7 @@
         
           <i class="fas fa-user" aria-hidden="true"></i>
         
-        <p>Chen</p>
+        <p>陈春阳</p>
       </a>
     
   </div>
@@ -427,6 +429,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义模块</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 引入工具模块</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> Observer = <span class="built_in">require</span>(<span class="string">'modules/tools'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 获取元素</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> words = <span class="built_in">document</span>.getElementById(<span class="string">'words'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 添加点击事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// 获取用户输入的内容</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> val = words.value;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// 触发事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        Observer.trigger(<span class="string">'add'</span>, val);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    &#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
 
       </div>
+      
+        <br>
+        <h6 id="注：文章内容遵循署名-非商业性使用-相同方式共享-4-0-国际-CC-BY-NC-SA-4-0-协议，转载请注明出处"><a href="#注：文章内容遵循署名-非商业性使用-相同方式共享-4-0-国际-CC-BY-NC-SA-4-0-协议，转载请注明出处" class="headerlink" title="注：文章内容遵循署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议，转载请注明出处"></a>注：文章内容遵循<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a>，转载请注明出处</h6>
       
       
         <br>
@@ -670,27 +675,13 @@
           
           
         
-      
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
           
           
         
       
+        
+          
+          
         
           
           
@@ -730,6 +721,9 @@
           
         
       
+        
+          
+          
         
           
           
@@ -801,6 +795,9 @@
           
         
       
+        
+          
+          
         
           
           
@@ -894,7 +891,13 @@
           
           
         
+          
+          
+        
       
+        
+          
+          
         
           
           
