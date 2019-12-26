@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://chenchunyang.site/2019/07/09/13-Implementing-applications-with-hook/</loc>
+        <lastmod>2019-12-26T09:14:27.214Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://chenchunyang.site/2019/12/04/15-Start-the-node-service/</loc>
         <lastmod>2019-12-25T08:00:41.844Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +26,6 @@
     <url>
         <loc>http://chenchunyang.site/2019/09/02/14-My-collection/</loc>
         <lastmod>2019-12-25T08:00:32.797Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://chenchunyang.site/2019/07/09/13-Implementing-applications-with-hook/</loc>
-        <lastmod>2019-12-25T08:00:13.179Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
