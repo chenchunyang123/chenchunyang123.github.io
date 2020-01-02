@@ -11,23 +11,23 @@ tags:
 
 ###### dom 结构
 
-![jq1.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq1.jpg)
+![jq1.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq1.jpg)
 
 <!-- more -->
 
 ###### js 方法
 
-![jq2.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq2.jpg)
+![jq2.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq2.jpg)
 
 ###### 输出
 
-![jq3.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq3.jpg)（省略后面重复部分）
+![jq3.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq3.jpg)（省略后面重复部分）
 
 ###### 定义一个数组及遍历
 
-![jq4.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq4.jpg)
+![jq4.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq4.jpg)
 输出：（this 的实质就是每一次遍历到的 value 的数字包装类型）
-![jq5.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq5.jpg)
+![jq5.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq5.jpg)
 
 ---
 
@@ -35,9 +35,9 @@ tags:
 
 ###### 定义一个数组及遍历
 
-![jq6.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq6.jpg)
+![jq6.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq6.jpg)
 输出：
-![jq7.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq7.jpg)
+![jq7.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq7.jpg)
 
 ---
 
@@ -45,9 +45,9 @@ tags:
 
 ###### 定义一个数组及遍历
 
-![jq8.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq8.jpg)
+![jq8.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq8.jpg)
 输出：
-![jq9.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq9.jpg)
+![jq9.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq9.jpg)
 
 ---
 
@@ -82,11 +82,11 @@ function each(target, fn) {
 
 ###### 数组遍历结果
 
-![jq10.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq10.jpg)
-![jq11.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq11.jpg)
+![jq10.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq10.jpg)
+![jq11.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq11.jpg)
 
 ###### 对象遍历结果
 
-![jq12.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq12.jpg)
-![jq13.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/05-Understanding-of-iterators/jq13.jpg)
+![jq12.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq12.jpg)
+![jq13.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/05-Understanding-of-iterators/jq13.jpg)
 

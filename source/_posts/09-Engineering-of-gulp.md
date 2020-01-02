@@ -50,7 +50,7 @@ gulp 是一个模块，在代码中被引入之后得到一个对象，该对象
 > taskName: 任务名称。
 > handler: 对应的任务函数。还可以是数组，如果是数组，数组内的成员是其它任务的名称。
 
-![1.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/1.png)
+![1.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/1.png)
 default 是具备特殊含义的任务名。表示默认、缺省的意思。是所有任务的开始入口。
 上面的定义任务表示当任务开始的时候执行的是 aaa 和 bbb 任务。
 
@@ -66,13 +66,13 @@ default 是具备特殊含义的任务名。表示默认、缺省的意思。是
 -   可以是 glob 表达式
 
 返回值：一个对象 该对象所拥有的方法可以决定如何操作目标文件
-![2.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/2.png)
+![2.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/2.png)
 
 #### gulp.pipe
 
 该方法不是 gulp 拥有的，而是 gulp.src 执行之后的返回值对象所拥有的。
 该方法用于定义一次操作。如果有多次操作，那么需要多次调用 pipe 方法。
-![3.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/3.png)
+![3.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/3.png)
 **红色部分，表示定义了一个操作。
 蓝色部分，表示具体操作。**
 
@@ -83,7 +83,7 @@ default 是具备特殊含义的任务名。表示默认、缺省的意思。是
 > gulp.dest(path);
 > path: 目录路径 表示发布的地址
 
-![4.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/4.png)
+![4.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/4.png)
 
 #### gulp.watch
 
@@ -96,7 +96,7 @@ default 是具备特殊含义的任务名。表示默认、缺省的意思。是
 > handler: 当目标文件发生改变时，执行的任务
 > **两个可选项**： 函数、数组
 
-![5.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/5.png)
+![5.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/5.png)
 以上代码表示：当./source/里的所有 js 文件中任一文件发生变化时，调用 update 任务。
 
 ### 插件
@@ -109,7 +109,7 @@ gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为�
 > 作用：压缩 JS
 > 下载：npm install gulp-uglify
 
-![6.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/6.png)
+![6.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/6.png)
 
 #### 压缩 css
 
@@ -117,7 +117,7 @@ gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为�
 > 作用：压缩 CSS
 > 下载：npm install gulp-clean-css
 
-![7.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/7.png)
+![7.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/7.png)
 
 #### 压缩 html
 
@@ -125,7 +125,7 @@ gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为�
 > 作用：压缩 html
 > 下载：npm install gulp-minify-html
 
-![8.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/8.png)
+![8.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/8.png)
 
 #### 合并
 
@@ -133,7 +133,7 @@ gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为�
 > 作用：合并文件
 > 下载：npm install gulp-concat
 
-![9.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/9.png)
+![9.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/9.png)
 
 #### 重命名
 
@@ -141,7 +141,7 @@ gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为�
 > 作用: 重命名文件
 > 下载: npm install gulp-rename
 
-![10.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/10.png)
+![10.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/10.png)
 
 #### 压缩图片
 
@@ -149,7 +149,7 @@ gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为�
 > 作用： 压缩图片
 > 下载： npm install gulp-imagemin
 
-![11.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/11.png)
+![11.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/11.png)
 
 #### 书写校验
 
@@ -166,8 +166,8 @@ gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为�
 -   尾巴不能有空格
 -   等等……
 
-![12.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/12.png)
+![12.png](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/12.png)
 检验有错误：
-![13.jpeg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/13.jpeg)
+![13.jpeg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/13.jpeg)
 检验通过：
-![14.jpeg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/14.jpeg)
+![14.jpeg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/14.jpeg)

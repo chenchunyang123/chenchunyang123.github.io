@@ -11,7 +11,7 @@ tags:
 
 假设现在我们要做一个需求，如下图：
 
-![需求动图](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/03-Delegation-mode/GIF1.gif)
+![需求动图](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/03-Delegation-mode/GIF1.gif)
 
 <!-- more -->
 
