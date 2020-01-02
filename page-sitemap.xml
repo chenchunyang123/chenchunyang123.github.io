@@ -8,6 +8,13 @@
     </url>
     
     <url>
+        <loc>http://chenchunyang.site/about/</loc>
+        <lastmod>2019-12-26T09:54:32.189Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>http://chenchunyang.site/tags/</loc>
         <lastmod>2019-12-24T10:00:03.559Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -31,13 +38,6 @@
     <url>
         <loc>http://chenchunyang.site/categories/</loc>
         <lastmod>2019-12-23T15:34:20.222Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://chenchunyang.site/about/</loc>
-        <lastmod>2019-12-23T15:33:56.548Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
