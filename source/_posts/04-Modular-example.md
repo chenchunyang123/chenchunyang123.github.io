@@ -10,7 +10,7 @@ tags:
 #### 实例演示
 
 首先我们打算实现如下图所示的效果：  
-![GIF.gif](https://i.loli.net/2019/12/02/aLjBlcPWpEGqohA.gif)
+![GIF.gif](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/04-Modular-example/GIF.gif)
 
 <!-- more -->
 

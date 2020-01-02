@@ -13,21 +13,21 @@ tags:
 
 1、在实例中，找到刚刚购买的服务器（没开机的先开机）
 
-![登录.jpg](https://i.loli.net/2019/12/02/oWdcGyaHKjwPUZC.jpg)
+![登录.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E7%99%BB%E5%BD%95.jpg)
 
 <!-- more -->
 
 2、点击右侧的登录按钮
 
-![登录方式.jpg](https://i.loli.net/2019/12/02/xtqTKRN3yMlVbro.jpg)
+![登录方式.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E7%99%BB%E5%BD%95%E6%96%B9%E5%BC%8F.jpg)
 
 3、因为我是 windows 的系统，这里选择第一种方式（如果你是其他的系统或者登录上有什么问题，可以点击上图中蓝色的字查看官方文档），然后会下载一个 rdp 文件到你的电脑中，之后双击这个文件，输入登录密码登录，密码的设置和重置这里不再说明，需要请查看官方文档
 
-![输入密码.jpg](https://i.loli.net/2019/12/02/D8VWlzpMQZ2PuwL.jpg)
+![输入密码.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81.jpg)
 
 4、输入正确的密码之后，我们就成功连接进来了，可以进行下一步操作了
 
-![成功登录.jpg](https://i.loli.net/2019/12/02/Um2KCL8bfDRwVnj.jpg)
+![成功登录.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E6%88%90%E5%8A%9F%E7%99%BB%E5%BD%95.jpg)
 
 #### 配置远程服务器 node
 
@@ -35,11 +35,11 @@ tags:
 
 1、首先下载 node 安装包，在官网选择与系统对应的版本，下载地址：http://nodejs.cn/download/
 
-![安装node.jpg](https://i.loli.net/2019/12/02/U3C57w9J62YudSr.jpg)
+![安装node.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E5%AE%89%E8%A3%85node.jpg)
 
 2、安装 node（不再详细介绍，主要一点是里面有一项 addtopath 需要勾选上，意思是添加到环境变量，那么你在磁盘的任意位置都可以使用 node 命令）
 
-![安装.jpg](https://i.loli.net/2019/12/02/juHIZN26RUxvGDK.jpg)
+![安装.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E5%AE%89%E8%A3%85.jpg)
 
 #### 写 node 接口
 
@@ -64,23 +64,23 @@ app.listen(80, () => {
 
 2、然后 vscode 的终端中开启 node 服务（命令：node [文件名].js）（不要忽略上一步中安装 express 的操作）
 
-![开启服务.jpg](https://i.loli.net/2019/12/02/t63VOJB7i1qhvp8.jpg)
+![开启服务.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E5%BC%80%E5%90%AF%E6%9C%8D%E5%8A%A1.jpg)
 
 #### 配置云服务器安全组
 
 因为我们想通过 80 端口，从别的机器上访问到/person 这个接口，那么我们就需要进行安全组配置，定义入站出站规则。
 1、打开之前云服务器后台界面，点击左侧安全组选项，然后在自己服务器的区域选项下点击新建按钮，再选择放通全部端口
 
-![配置步骤.jpg](https://i.loli.net/2019/12/02/bLrITUeoNDVX9y7.jpg)
+![配置步骤.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4.jpg)
 
 2、然后我们需要关联服务器，点击管理实例，新增关联，选择服务器，确定
 
 ![管理实例.jpg](https://i.loli.net/2019/12/02/p52ZkWPSOghRfCw.jpg)
-![关联实例.jpg](https://i.loli.net/2019/12/02/7urcd5xfin9VKOz.jpg)
+![关联实例.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E5%85%B3%E8%81%94%E5%AE%9E%E4%BE%8B.jpg)
 
 3、这些配置完成后，我们就可以在自己电脑上的浏览器通过服务器的公网 ip 成功访问到该接口了
 
-![访问接口.jpg](https://i.loli.net/2019/12/02/Hzh1kRL5dysJwpA.jpg)
+![访问接口.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/14-Start-the-node-service/%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3.jpg)
 
 #### 注意问题
 

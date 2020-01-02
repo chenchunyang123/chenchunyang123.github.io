@@ -12,7 +12,7 @@ tags:
 
 在网页中，当我们在注册一个账号，也就是填写表单的时候，经常会看到一个效果：比如输入了用户名过后，再点击密码框想设置密码，这时网页会检测你的用户名是否合法，是否符合要求（如下图）。
 
-![form.jpg](https://i.loli.net/2019/12/02/ZKM6XcD4xLGAhi1.jpg)
+![form.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/02-Login-policy/form.jpg)
 
 <!-- more -->
 

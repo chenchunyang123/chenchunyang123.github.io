@@ -15,7 +15,7 @@ tags:
 <!-- more -->
 
 如下图：
-![1.jpg](https://i.loli.net/2019/12/02/2cwzlXgOd7LEUD9.jpg)
+![1.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/11-About-the-use-of-transform/1.jpg)
 在之前一版没加‘验证码’表单项时，在笔记本上还能够勉强都显示出来，但是再加一行过后，明显已经超过浏览器的显示范围了，这对于用户体验来说很不友好。
 其实如果是在正规的 1920\*1080 分辨率的屏幕下，显示效果很好，但是笔记本用户一般会对电脑显示进行放大，且一般为 125%，所以就会出现这种情况。
 
@@ -25,4 +25,4 @@ tags:
 渲染的时候先用 window.document.documentElement.clientHeight 读取到页面的高度，当这个高度小于 950 的时候，加上 zoom：0.8，但是这时候又遇到了一个新的问题：在 ie 和 chrome 下支持，在 firefox 下不起作用。
 于是马上打开百度搜索，在看过几个答案过后，得出一个结论：zoom 确实存在兼容性问题，但是可以用 transform: scale(0.8)搭配 transform-origin：‘center center’来解决 firefox 下不起作用的问题（不过最后因为不用考虑 ie 低版本，所以直接舍弃掉 zoom 属性，统一用 transform：scale(0.8)以及 transform-origin：‘center center’来改变样式）。
 最后在 125%缩放的笔记本显示效果如下：
-![2.jpg](https://i.loli.net/2019/12/02/MaXqKAEQ3LVwkNF.jpg)
+![2.jpg](https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/11-About-the-use-of-transform/2.jpg)
