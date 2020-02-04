@@ -91,12 +91,12 @@
         </li>
       
         <li>
-          <a class="nav home" href="/notes/dist/"
+          <a class="nav home" href="http://notes.chenchunyang.site/dist"
             
             
               target="true"
             
-            id="notesdist">
+            id="http:notes.chenchunyang.sitedist">
             <i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
           </a>
         </li>
@@ -232,12 +232,12 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/notes/dist/"
+							<a class="nav flat-box" href="http://notes.chenchunyang.site/dist"
                 
                 
                   target="true"
                 
-                id="notesdist">
+                id="http:notes.chenchunyang.sitedist">
 								<i class='fas fa-sticky-note fa-fw'></i>&nbsp;笔记
 							</a>
             </li>
@@ -419,7 +419,7 @@
 <blockquote>
 <p>语法：gulp.task(taskName, handler);<br>taskName: 任务名称。<br>handler: 对应的任务函数。还可以是数组，如果是数组，数组内的成员是其它任务的名称。</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/1.png" alt="1.png"><br>default 是具备特殊含义的任务名。表示默认、缺省的意思。是所有任务的开始入口。<br>上面的定义任务表示当任务开始的时候执行的是 aaa 和 bbb 任务。</p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/1.png" alt="1.png"><br>default 是具备特殊含义的任务名。表示默认、缺省的意思。是所有任务的开始入口。<br>上面的定义任务表示当任务开始的时候执行的是 aaa 和 bbb 任务。</p>
 <h4 id="gulp-src"><a href="#gulp-src" class="headerlink" title="gulp.src"></a>gulp.src</h4><p>该方法用于将物理文件转换成文件流。</p>
 <blockquote>
 <p>gulp.src(filePath);<br>filePath: 表示文件路径的值 有三个可选项</p>
@@ -429,43 +429,43 @@
 <li>可以是数组 表示多个文件</li>
 <li>可以是 glob 表达式</li>
 </ul>
-<p>返回值：一个对象 该对象所拥有的方法可以决定如何操作目标文件<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/2.png" alt="2.png"></p>
-<h4 id="gulp-pipe"><a href="#gulp-pipe" class="headerlink" title="gulp.pipe"></a>gulp.pipe</h4><p>该方法不是 gulp 拥有的，而是 gulp.src 执行之后的返回值对象所拥有的。<br>该方法用于定义一次操作。如果有多次操作，那么需要多次调用 pipe 方法。<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/3.png" alt="3.png"><br><strong>红色部分，表示定义了一个操作。<br>蓝色部分，表示具体操作。</strong></p>
+<p>返回值：一个对象 该对象所拥有的方法可以决定如何操作目标文件<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/2.png" alt="2.png"></p>
+<h4 id="gulp-pipe"><a href="#gulp-pipe" class="headerlink" title="gulp.pipe"></a>gulp.pipe</h4><p>该方法不是 gulp 拥有的，而是 gulp.src 执行之后的返回值对象所拥有的。<br>该方法用于定义一次操作。如果有多次操作，那么需要多次调用 pipe 方法。<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/3.png" alt="3.png"><br><strong>红色部分，表示定义了一个操作。<br>蓝色部分，表示具体操作。</strong></p>
 <h4 id="gulp-dest"><a href="#gulp-dest" class="headerlink" title="gulp.dest"></a>gulp.dest</h4><p>该方法用于将流文件转换成物理文件，与 src 正好相反。</p>
 <blockquote>
 <p>gulp.dest(path);<br>path: 目录路径 表示发布的地址</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/4.png" alt="4.png"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/4.png" alt="4.png"></p>
 <h4 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp.watch"></a>gulp.watch</h4><p>该方法用于监听文件，触发任务。<br>当我们一边写代码，一边工程化时，如果每一次修改代码都需要自己调用 gulp 命令，会显得很繁琐,此时我们可以使用 gulp.watch.</p>
 <blockquote>
 <p>gulp.watch(target, handler);<br>target: 目标文件<br><strong>三个可选项</strong>： 文件路径字符串、数组、glob 表达式<br>handler: 当目标文件发生改变时，执行的任务<br><strong>两个可选项</strong>： 函数、数组</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/5.png" alt="5.png"><br>以上代码表示：当./source/里的所有 js 文件中任一文件发生变化时，调用 update 任务。</p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/5.png" alt="5.png"><br>以上代码表示：当./source/里的所有 js 文件中任一文件发生变化时，调用 update 任务。</p>
 <h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>gulp 本身只有 5 个 API。只依靠它自己，基本什么工程化行为都无法完成，但是它具备大量的插件（这里介绍 7 个插件）。</p>
 <h4 id="压缩-js"><a href="#压缩-js" class="headerlink" title="压缩 js"></a>压缩 js</h4><blockquote>
 <p>插件名称： gulp-uglify<br>作用：压缩 JS<br>下载：npm install gulp-uglify</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/6.png" alt="6.png"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/6.png" alt="6.png"></p>
 <h4 id="压缩-css"><a href="#压缩-css" class="headerlink" title="压缩 css"></a>压缩 css</h4><blockquote>
 <p>插件名称：gulp-clean-css<br>作用：压缩 CSS<br>下载：npm install gulp-clean-css</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/7.png" alt="7.png"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/7.png" alt="7.png"></p>
 <h4 id="压缩-html"><a href="#压缩-html" class="headerlink" title="压缩 html"></a>压缩 html</h4><blockquote>
 <p>插件名称：gulp-minify-html<br>作用：压缩 html<br>下载：npm install gulp-minify-html</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/8.png" alt="8.png"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/8.png" alt="8.png"></p>
 <h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><blockquote>
 <p>插件名称：gulp-concat<br>作用：合并文件<br>下载：npm install gulp-concat</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/9.png" alt="9.png"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/9.png" alt="9.png"></p>
 <h4 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h4><blockquote>
 <p>模块名称: gulp-rename<br>作用: 重命名文件<br>下载: npm install gulp-rename</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/10.png" alt="10.png"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/10.png" alt="10.png"></p>
 <h4 id="压缩图片"><a href="#压缩图片" class="headerlink" title="压缩图片"></a>压缩图片</h4><blockquote>
 <p>插件名称：gulp-imagemin<br>作用： 压缩图片<br>下载： npm install gulp-imagemin</p>
 </blockquote>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/11.png" alt="11.png"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/11.png" alt="11.png"></p>
 <h4 id="书写校验"><a href="#书写校验" class="headerlink" title="书写校验"></a>书写校验</h4><blockquote>
 <p>插件名称：gulp-jslint<br>作用： 检验 js 格式<br>下载： npm install gulp-jslint<br>格式规范：</p>
 <ul>
@@ -479,7 +479,7 @@
 <li>尾巴不能有空格</li>
 <li>等等……</li>
 </ul>
-<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/12.png" alt="12.png"><br>检验有错误：<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/13.jpeg" alt="13.jpeg"><br>检验通过：<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/blog/09-Engineering-of-gulp/14.jpeg" alt="14.jpeg"></p>
+<p><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/12.png" alt="12.png"><br>检验有错误：<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/13.jpeg" alt="13.jpeg"><br>检验通过：<br><img src="https://myblog-1257961174.cos.ap-beijing.myqcloud.com/09-Engineering-of-gulp/14.jpeg" alt="14.jpeg"></p>
 
       </div>
       
