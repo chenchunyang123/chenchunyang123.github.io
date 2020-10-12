@@ -98,7 +98,7 @@ deploy:
     type: git
     repository:
         github: git@github.com:chenchunyang123/chenchunyang123.github.io.git
-        coding: https://git.dev.tencent.com/chenchunyang123/chenchunyang123.coding.me.git
+        coding: git@e.coding.net:chenchunyang123/chenchunyang123.coding.me.git
     branch: master
 
 favicon: http://chenchunyang123.coding.me/ico/fish.ico
